@@ -328,13 +328,13 @@ All parameters are optional unless specified otherwise.
 
 #### Response attributes
 
-`company` Company handling order
+`company` Full Company object with taxi company which handled booking.
 
-`pickup` Pickup details
+`pickup` Full Location object with pickup details.
 
-`vehicleType` Type of car which will come to pickup client. Valid values are returned in [companies/spot](#spot_companies) operations (`vehicleTypes` attribute)
+`vehicleType` Type of car which is picking up client. Valid values are returned in [companies/spot](#spot_companies) operations (`vehicleTypes` attribute)
 
-`arrivalAt` Date and time when taxi will arrive.
+`arrivalAt` Date and time taxi will arrive/arrived.
 
 `statuses` List of statuses associated with booking. Statuses are localized based on clients language. See [clients/:clientId/bookings/:bookingId](#get_client_booking) for details about these statuses.
 
