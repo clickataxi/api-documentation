@@ -797,7 +797,8 @@ Returns full details about an existing booking created by client.
 
 ### DELETE /clients/:clientId/bookings/:bookingId
 
-Cancels a booking. The method might fail with a `422 Unprocessed Entity` response in case a booking can't be canceled e.g. if taxi is already on its way or at the pickup address.
+Cancels a booking. The method might fail with a `400 Bad Request` response in case a booking can't be canceled e.g. if taxi is already on its way or at the pickup address. A `422 Unprocessed Entity` response is returned in case specified clientId or bookingId isn't valid.
+
 
 #### Example request
 
