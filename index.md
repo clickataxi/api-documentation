@@ -83,7 +83,7 @@ Requests an authorization token by posting via basic authentication. Upon succes
 
 ### <a id="nearby_places"></a> GET /places/nearby
 
-Returns list of nearby Point Of Interests (POIs). This could include airports, metro- or bus stations, restaurants and many more. One POI doesn't necessarily have a category and it might even have more than one category.
+Returns list of nearby Point Of Interests (POIs). This could include airports, metro- or bus stations, restaurants and others. One POI doesn't necessarily have a category or it might have more than one category.
 
 
 #### Request parameters
@@ -106,6 +106,40 @@ All parameters are optional unless specified otherwise.
 `distance` Calculated distance to this POI in meters.
 
 `radius` Radius in meters of this POI.
+
+`categories[type]` A type for this POI
+
+<table>
+	<tr>
+		<th width="20%">Type</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>airport</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>restaurant</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>busStation</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>trainStation</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>shopping</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>other</td>
+		<td></td>
+	</tr>
+</table>
+
 
 
 #### Example request
