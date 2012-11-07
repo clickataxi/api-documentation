@@ -4,7 +4,6 @@ layout: default
 
 The Click A Taxi API provides the ability to create and retrieve required information in order to book taxis globally.
 
-
 ## Introduction
 
 Every URL is in the format https://api.clickataxi.com/:resource[/:action[?:params]] such as https://api.clickataxi.com/places/nearby to get a list of nearby places.
