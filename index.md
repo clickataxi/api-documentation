@@ -356,7 +356,9 @@ Returns list of all bookings created by client with specified id. Only bookings 
 
 All parameters are optional unless specified otherwise.
 
-`since` Only return bookings after this timestamp (example `2012-03-24T11:00:00Z`)
+`since` Only return bookings after this timestamp (example `2012-03-24T11:00:00Z`). If not specified all bookings are returned.
+
+`completed` A boolean value indicating if only completed bookings should be returned. If not specified all bookings are returned.
 
 
 #### Response attributes
