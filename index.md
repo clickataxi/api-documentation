@@ -591,6 +591,7 @@ Get details about an existing client. Only clients created by you can be fetched
 	    "name": "Doe",
 	    "phone": "+4561616161",
 	    "language": "en",
+	    "email": "john@doe.com",
 	    "guid": "1003a3bb8d4a40f08065e640621fee63"
 	}
 
