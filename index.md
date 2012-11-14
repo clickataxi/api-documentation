@@ -595,6 +595,34 @@ Get details about an existing client. Only clients created by you can be fetched
 	    "guid": "1003a3bb8d4a40f08065e640621fee63"
 	}
 
+### PUT /clients/:clientId
+
+Updates an existing client. Only clients created by you can be updated.
+
+#### Example request
+
+	curl https://api.clickataxi.com/clients/61449
+		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"'
+		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Content-type: application/json'
+		-d '{ "name": "Jobs", "phone": "+4561715099" }'
+		-X PUT
+
+#### Example response
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json; charset=utf-8
+
+	{
+	    "createdAt": "2012-09-05T12:11:01.9744265Z",
+	    "id": "61449",
+	    "name": "Jobs",
+	    "phone": "+4561715099",
+	    "language": "en",
+	    "email": "john@doe.com",
+	    "guid": "1003a3bb8d4a40f08065e640621fee63"
+	}
+
 
 ### <a id="post_clients_bookings"></a> POST /clients/:clientId/bookings
 
