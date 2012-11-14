@@ -26,7 +26,7 @@ Responses will be compressed if request includes an `Accept-Encoding` header wit
 
 <!-- FUTURE: Operations using a `lang` or `language` parameter might use an `Accept-Language` header instead. -->
 
-All timestamps are represented as ISO 8601.
+All timestamps are represented as ISO 8601 format `YYYY-MM-DDTHH:MM:SSZ`.
 
 IDs are represented as strings and should be stored and treated as strings. Format of IDs might change across API versions.
 
