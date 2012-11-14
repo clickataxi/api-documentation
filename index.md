@@ -860,7 +860,7 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.clickataxi.v2+json' \
 		-H 'Content-type: application/json' \
-		-d '{ "clientId": "1543263", "bookingId": "5436443", "stars": 4 }'
+		-d '{ "clientId": "1543263", "bookingId": "5436443", "stars": 4, "review": "Funny driver" }'
 
 #### Example response
 
@@ -872,7 +872,8 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 		"id": "9dc8bb819c2a4cc4990a9f93be78669e",
 		"clientId": "1543263",
 		"bookingId": "5436443",
-	    "stars": 4
+	    "stars": 4,
+	    "review": "Funny driver"
 	}
 
 
