@@ -705,6 +705,8 @@ Returns full details about an existing booking created by client.
 
 #### Response attributes
 
+`completed` True if booking may be considered as completed i.e. a client has completed trip or trip has failed.
+
 `statuses` List of statuses associated with booking. Statuses are localized based on client language.
 
 `statuses[id]` Unique id of booking status returned. May be used by you to check if a given status has been handled/displayed for users.
@@ -775,10 +777,6 @@ Returns full details about an existing booking created by client.
 		<td>Order is being manually assigned</td>
 	</tr>
 	<tr>
-		<td>cancelDisabled</td>
-		<td>Taxi cannot be cancelled anymore</td>
-	</tr>
-	<tr>
 		<td>lookOut</td>
 		<td>Taxi is about to arrive and customer should get ready for it</td>
 	</tr>
@@ -792,9 +790,7 @@ Returns full details about an existing booking created by client.
 
 `statuses[body]` Longer description including details of status. Localized in clients language.
 
-`statuses[cancelable]` True if a booking are still valid to cancel; false otherwise. Is `true` initially and changes to `false` once a car has been dispatched or if isn't possible to cancel a placed booking.
-
-`statuses[completed]` True if booking may be considered as completed i.e. a client has completed trip or trip has failed.
+`statuses[cancelable]` True if a booking is still valid to cancel; false otherwise. Is `true` initially and changes to `false` once a car has been dispatched or if isn't possible to cancel a placed booking.
 
 
 #### Example request
@@ -834,24 +830,21 @@ Returns full details about an existing booking created by client.
                 "type": "executed",
                 "header": "Booking is received",
                 "body": "Your taxi will pick you up at the selected time",
-                "cancelable": true,
-                "completed": false
+                "cancelable": true
             },
             {
                 "createdAt": "2012-03-19T13:23:56.3048576Z",
                 "type": "processing",
                 "header": "Processing",
                 "body": "We are processing the booking request.",
-                "cancelable": true,
-                "completed": false
+                "cancelable": true
             },
             {
                 "createdAt": "2012-03-19T13:23:44.7758936Z",
                 "type": "registered",
                 "header": "Booking is received",
                 "body": "Your taxi will pick you up at the selected time",
-                "cancelable": true,
-                "completed": false
+                "cancelable": true
             }
         ],
 	    "createdAt": "2012-03-19T06:30:01.0000000Z",
