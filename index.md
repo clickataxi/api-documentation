@@ -347,6 +347,12 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	    }
 	]
 
+
+### <a id="lookup_companies"></a> GET /companies/lookup
+
+TODO: compound structure for getting Place + Company in a single method
+
+
 ### GET /clients/:clientId/bookings
 
 Returns list of all bookings created by client with specified id. Only bookings for clients you have created can be requested. Requesting bookings for a client you haven't created will return a 404 error message.
