@@ -229,6 +229,10 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 #### Response attributes
 
+`rating` Average rating of company as a floating point value. The rating is between 1 and 5. If no rating is returned that company doesn't have enough user ratings yet.
+
+`eta` An estimated time of arrival for a taxi within this area at requested time.
+
 `properties.name[vehicleTypes]` A list of available vehicle types offered by company. The `ref` attribute should be used as `vehicleType` attribute when ordering a taxi. List vary from company to company but may be cached by company. Consider rechecking this attribute over time, though since taxi companies might start to support more vehicle types.
 
 <table>
@@ -343,7 +347,9 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	            }
 	        ],
 	        "destinationRequired": false,
-	        "automatedBooking": true
+	        "automatedBooking": true,
+	        "rating": 4.2,
+	        "eta": 8
 	    }
 	]
 
