@@ -35,7 +35,7 @@ Example requests are constructed using [cURL](http://en.wikipedia.org/wiki/CURL)
 
 ## Suggested booking flow
 
-As as minimum requirement to book a taxi, one must first [authenticate](#authorizations) then create a [create a client](#clients) and finally [create a booking](#bookings). Usually one would also like to display which taxi companies [operate in a given area](#spot_companies) and check if that company allows automatic booking and/or a special type of vehicle.
+As as minimum requirement to book a taxi, one must first [authenticate](#authorizations) then create a [create a client](#clients) and finally [create a booking](#bookings). Usually one would also like to display which taxi companies [operate in a given area](#spot_companies) and check if that company allows automated bookings and/or a special type of vehicle. To check if company supports automated bookings the "automatedBooking" attribute on a company should be checked. If this is `false` our API can't book on this company i.e. trying to place a booking through the API will fail but you may use returned phone number for company to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
 
 
 ## Authentication
@@ -191,7 +191,12 @@ Returns details about a specific company. Use this operation to a high-level det
 
 `name` Name of taxi company
 
-`phone` Number for taxi company using the [E.164 format](http://en.wikipedia.org/wiki/E.164).
+`phone` Number for taxi company using the [E.164 format](http://en.wikipedia.org/wiki/E.164)
+
+`automatedBooking` True if company supports fully automated bookings through API; false otherwise
+
+`destinationRequired` True if company requires a dropoff address for handling orders; false otherwise
+
 
 #### Example request
 
@@ -659,13 +664,13 @@ A success response means our system has accepted your request for a taxi but not
 
 #### Example request
 
-Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` structure may include a `placeRef` attribute instead of a full address in case you want to book at a [Point Of Interest](#nearby_places). Client is bringing a child so a child seat is requested.
+Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` structure may include a `placeRef` attribute instead of a full address in case you want to book at a [Point Of Interest](#nearby_places). Client is bringing a child so a child seat is requested as a service too.
 
 	curl https://api.clickataxi.com/clients/9535253/bookings \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.clickataxi.v2+json' \
 		-H 'Content-type: application/json' \
-		-d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "vehicleType": "fourSeaterAny" }'
+		-d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "vehicleType": "fourSeaterAny", "services": "childSeat" }'
 
 #### Example response
 
@@ -719,6 +724,8 @@ Returns full details about an existing booking created by client.
 
 `completed` True if booking may be considered as completed i.e. a client has completed trip or trip has failed.
 
+`state` Current state of booking as `active`, `successful` or `unsuccessful`. 
+
 `statuses` List of statuses associated with booking. Statuses are localized based on client language.
 
 `statuses[id]` Unique id of booking status returned. May be used by you to check if a given status has been handled/displayed for users.
@@ -766,7 +773,7 @@ Returns full details about an existing booking created by client.
 	</tr>
 	<tr>
 		<td>failed</td>
-		<td>Order failed and no taxi will arrive</td>
+		<td>Order failed and *no taxi will arrive*. This might happen for a number of reasons but primarly if a booking is tried to be placed automatically but fails because of invalid address or external system error.</td>
 	</tr>
 	<tr>
 		<td>processing</td>
@@ -782,7 +789,7 @@ Returns full details about an existing booking created by client.
 	</tr>
 	<tr>
 		<td>unfulfilled</td>
-		<td>Order was not successfully completed</td>
+		<td>Order was not successfully completed and *no taxi will arrive*. This might happen when taxi company doesn't pick up their phone, they are too busy to process more orders at the moment or address/area is illegal for some reason. If you are certain on address you could retry request within a couple of minutes.</td>
 	</tr>
 	<tr>
 		<td>assigned</td>
@@ -823,6 +830,23 @@ Returns full details about an existing booking created by client.
 	    "company": {
 	        "id": "2",
 	        "name": "Taxa4 x 35",
+	        "properties": [
+	            {
+	                "name": "vehicleTypes",
+	                "values": [
+	                    {
+	                        "ref": "fourSeaterAny",
+	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-any_logo.png"
+	                    },
+	                    {
+	                        "ref": "fourSeaterStationCar",
+	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-station-car_logo.png"
+	                    }
+	                ],
+	                "mutuallyExclusive": true
+	            }
+	        ],
+	        "rating": 4.0,
 	        "phone": "+4535309184"
 	    },
 	    "pickup": {
@@ -860,7 +884,8 @@ Returns full details about an existing booking created by client.
             }
         ],
 	    "createdAt": "2012-03-19T06:30:01.0000000Z",
-	    "arrivalAt": "2012-03-20T08:00:00.0000000Z"
+	    "arrivalAt": "2012-03-20T08:00:00.0000000Z",
+	    "state": "active"
 	}
 
 
