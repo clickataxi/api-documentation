@@ -361,7 +361,78 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 ### <a id="lookup_companies"></a> GET /companies/lookup
 
-TODO: compound structure for getting Place + Company in a single method
+Requests address and taxi company on a given location.
+
+
+#### Request parameters
+
+`language` ISO 639-1 language code of client (example `da` for Danish). This value is used to determine in which language addresses should be delivered.
+
+`latlng` _required*_ Latitude and longitude of location for reverse geocoding (example `55.10,12.13`)
+
+
+#### Response attributes
+
+`place` A Place structure with address details about specified location.
+
+`company` A Company structure with details about company operating in specified location.
+
+
+#### Example request
+
+	curl https://api.master.clickataxi.com/companies/lookup?language=en-GB&latlng=51%2E509205,-0%2E146690 \
+		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
+		-H 'Accept: application/vnd.clickataxi.v2+json' 
+
+
+#### Example response
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json; charset=utf-8
+
+	{
+	    "place": {
+	        "location": {
+	            "streetName": "Berkeley Square",
+	            "houseNumber": "45",
+	            "zipCode": "W1J 5AS",
+	            "city": "London",
+	            "country": "GB",
+	            "lat": 51.509208299999997,
+	            "lng": -0.14658589999999999,
+	            "formattedAddress": "Berkeley Square 45\nW1J 5AS London"
+	        }
+	    },
+	    "company": {
+	        "id": "1580030126",
+	        "name": "greentomatocars",
+	        "destinationRequired": true,
+	        "automatedBooking": true,
+	        "properties": [
+	            {
+	                "name": "vehicleTypes",
+	                "values": [
+	                    {
+	                        "ref": "fourSeaterAny",
+	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-any_logo.png"
+	                    },
+	                    {
+	                        "ref": "fiveSeater",
+	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_five-seater_logo.png"
+	                    },
+	                    {
+	                        "ref": "fiveSeaterBlackCab",
+	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_five-seater-black-cab_logo.png"
+	                    }
+	                ],
+	                "mutuallyExclusive": true
+	            }
+	        ],
+	        "rating": 4.0,
+	        "phone": "+442083808900",
+	        "eta": 14
+	    }
+	}
 
 
 ### GET /clients/:clientId/bookings
@@ -785,7 +856,7 @@ Returns full details about an existing booking created by client.
 	</tr>
 	<tr>
 		<td>failed</td>
-		<td>Order failed and *no taxi will arrive*. This might happen for a number of reasons but primarly if a booking is tried to be placed automatically but fails because of invalid address or external system error.</td>
+		<td>Order failed and <i>no taxi will arrive</i>. This might happen for a number of reasons but primarly if a booking is tried to be placed automatically but fails because of invalid address or external system error.</td>
 	</tr>
 	<tr>
 		<td>processing</td>
@@ -801,7 +872,7 @@ Returns full details about an existing booking created by client.
 	</tr>
 	<tr>
 		<td>unfulfilled</td>
-		<td>Order was not successfully completed and *no taxi will arrive*. This might happen when taxi company doesn't pick up their phone, they are too busy to process more orders at the moment or address/area is illegal for some reason. If you are certain on address you could retry request within a couple of minutes.</td>
+		<td>Order was not successfully completed and <i>no taxi will arrive</i>. This might happen when taxi company doesn't pick up their phone, they are too busy to process more orders at the moment or address/area is illegal for some reason. If you are certain on address you could retry request within a couple of minutes.</td>
 	</tr>
 	<tr>
 		<td>assigned</td>
@@ -946,7 +1017,7 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 	    "review": "Funny driver"
 	}
 
-
+<!--
 ### GET /geocodings
 
 Performs a geocoding or reverse geocoding based on parameters.
@@ -1005,3 +1076,4 @@ Performs a geocoding or reverse geocoding based on parameters.
 	        "lng": 12.55082
 	    }
 	]
+-->
