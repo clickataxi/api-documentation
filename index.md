@@ -380,9 +380,11 @@ All parameters are optional unless specified otherwise.
 
 #### Response attributes
 
-`company` Full Company object with taxi company which handled booking.
+`company` Full Company object with taxi company which handled booking
 
-`pickup` Full Location object with pickup details.
+`pickup` Full Location object with pickup details
+
+`dropoff` Full Location object with dropoff details (only returned if available).
 
 `vehicleType` Type of car which is picking up client. Valid values are returned in [companies/spot](#spot_companies) operations (`vehicleTypes` attribute)
 
@@ -421,6 +423,16 @@ All parameters are optional unless specified otherwise.
 	            "lat": 55.68,
 	            "lng": 12.59,
 	            "zipCode": "1256"
+	        },
+	        "dropoff": {
+	            "streetName": "Jagtvej",
+	            "houseNumber": "111",
+	            "city": "Copenhagen N",
+	            "country": "DK",
+	            "distance": 0,
+	            "lat": 54.310000000000002,
+	            "lng": 12.199999999999999,
+	            "zipCode": "2200"
 	        },
 	        "vehicleType": "fourSeaterAny",
 	        "statuses": [
