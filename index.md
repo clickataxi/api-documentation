@@ -115,27 +115,27 @@ All parameters are optional unless specified otherwise.
 	</tr>
 	<tr>
 		<td>airport</td>
-		<td></td>
+		<td>Place is an airport</td>
 	</tr>
 	<tr>
 		<td>restaurant</td>
-		<td></td>
+		<td>Place is a restaurant</td>
 	</tr>
 	<tr>
 		<td>busStation</td>
-		<td></td>
+		<td>Place is a bus station</td>
 	</tr>
 	<tr>
 		<td>trainStation</td>
-		<td></td>
+		<td>Place is a train station</td>
 	</tr>
 	<tr>
 		<td>shopping</td>
-		<td></td>
+		<td>Place is a shop</td>
 	</tr>
 	<tr>
 		<td>other</td>
-		<td></td>
+		<td>Place is uncategories</td>
 	</tr>
 </table>
 
