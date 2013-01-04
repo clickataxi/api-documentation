@@ -361,7 +361,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 ### <a id="lookup_companies"></a> GET /companies/lookup
 
-Requests address and taxi company on a given location.
+Requests address, taxi company and address formats for a given location.
 
 
 #### Request parameters
@@ -376,6 +376,8 @@ Requests address and taxi company on a given location.
 `place` A Place structure with address details about specified location.
 
 `company` A Company structure with details about company operating in specified location.
+
+`addressFormat` An AddressFormat structure with address formatting rules. This is an optional attribute which might not be available in all locations.
 
 
 #### Example request
@@ -431,6 +433,11 @@ Requests address and taxi company on a given location.
 	        "rating": 4.0,
 	        "phone": "+442083808900",
 	        "eta": 14
+	    },
+	    "addressFormat": {
+	    	"titleTemplate": "streetName houseNumber",
+	    	"subtitleTemplate": "zipCode city",
+	    	"requiredFields": ["streetName", "houseNumber", "zipCode"]
 	    }
 	}
 
