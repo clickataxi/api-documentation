@@ -35,7 +35,7 @@ Example requests are constructed using [cURL](http://en.wikipedia.org/wiki/CURL)
 
 ## Suggested booking flow
 
-As as minimum requirement to book a taxi, one must first [authenticate](#authorizations) then create a [create a client](#clients) and finally [create a booking](#bookings). Usually one would also like to display which taxi companies [operate in a given area](#spot_companies) and check if that company allows automated bookings and/or a special type of vehicle. To check if company supports automated bookings the "automatedBooking" attribute on a company should be checked. If this is `false` our API can't book on this company i.e. trying to place a booking through the API will fail but you may use returned phone number for company to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
+As as minimum requirement to book a taxi, one must first [authenticate](#authorizations) then create a [create a client](#clients) and finally [create a booking](#post_clients_bookings). Usually one would also like to display which taxi companies [operate in a given area](#spot_companies) and check if that company allows automated bookings and/or a special type of vehicle. To check if company supports automated bookings the "automatedBooking" attribute on a company should be checked. If this is `false` our API can't book on this company i.e. trying to place a booking through the API will fail but you may use returned phone number for company to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
 
 
 ## Authentication
