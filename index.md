@@ -652,6 +652,7 @@ Creates a new client which is necessary before a booking can be created. A clien
 
 `language` ISO 639-1 language code of client (example `da` for Danish). This value is used to determine in which language status messages should be delivered.
 
+`os` Type of OS used by client, if applicable. Types can be either 'ios', 'android' or 'windowsPhone'.
 
 #### Example request
 
