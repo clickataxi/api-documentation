@@ -642,17 +642,20 @@ All parameters are optional unless specified otherwise.
 
 ### <a id="clients"></a> POST /clients
 
-Creates a new client which is necessary before a booking can be created. A client must have at least a name and phone number. Both name and phone number might be send to a taxi company in order to book the taxi, so make sure your privacy policy tells your users about it. An SMS might be sent to client for verification purposes.
+Creates a new client which is necessary before a booking can be created. A client must have at least a name and phone number. Both name and phone number might be forwarded to a taxi company in order to book taxis, so make sure your privacy policy tells your users about it. An SMS might be sent to client for verification purposes.
 
 #### Request attributes
 
-`name` Name of client which could be formatted to taxi company. This is usually a last name but could be a full name too.
+`name` Name of client which could be forwarded to taxi company. This is usually a last name but could be a full name too.
 
 `phone` Number of client formatted as a [E.164](http://en.wikipedia.org/wiki/E.164) number.
 
 `language` ISO 639-1 language code of client (example `da` for Danish). This value is used to determine in which language status messages should be delivered.
 
 `os` Type of OS used by client, if applicable. Types can be either 'ios', 'android' or 'windowsPhone'.
+
+`guid` Optional. A unique identifier for client which you may use internally since it will never change. If not specified you should read the returned `guid` attribute in response payload and store that when updating clients.
+
 
 #### Example request
 
@@ -680,7 +683,7 @@ Creates a new client which is necessary before a booking can be created. A clien
 
 ### GET /clients/:clientId
 
-Get details about an existing client. Only clients created by you can be fetched. Requesting other clients will return in 404.
+Get details about an existing client. Only clients created by you can be fetched. Requesting other clients will return in a 404 Not Found response.
 
 #### Example request
 
