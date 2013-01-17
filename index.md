@@ -20,7 +20,7 @@ Clients must include an `Accept` header with a custom Click A Taxi mime type to 
 
 If this header isn't specified the latest API version is used but it's highly recommended to specific a specific version since future revisions might not be fully backward compatible.
 
-Currently `v1`, `v2` and `latest` are supported as `version` and `json` as `type`. 
+Currently supported is `v1`, `v2` and `latest` for `version` and `json` for `type`. 
 
 Responses will be compressed if request includes an `Accept-Encoding` header with a `gzip` value.
 
@@ -28,19 +28,25 @@ Responses will be compressed if request includes an `Accept-Encoding` header wit
 
 All timestamps are represented as ISO 8601 format `YYYY-MM-DDTHH:MM:SSZ`.
 
-IDs are represented as strings and should be stored and treated as strings. Format of IDs might change across API versions.
+All IDs are represented as strings and should be stored and treated as strings. The format might change across API versions without notice.
 
 Example requests are constructed using [cURL](http://en.wikipedia.org/wiki/CURL) commands.
 
 
 ## Suggested booking flow
 
-As as minimum requirement to book a taxi, one must first [authenticate](#authorizations) then create a [create a client](#clients) and finally [create a booking](#post_clients_bookings). Usually one would also like to display which taxi companies [operate in a given area](#spot_companies) and check if that company allows automated bookings and/or a special type of vehicle. To check if company supports automated bookings the "automatedBooking" attribute on a company should be checked. If this is `false` our API can't book on this company i.e. trying to place a booking through the API will fail but you may use returned phone number for company to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
+As as minimum requirement to book a taxi, one must first [acquire an access token](#authorizations) with provided credentials to get an access token. This access token must be used for all future requests.
+
+Second step is to [create a client](#clients) and finally [create a booking](#post_clients_bookings).
+
+Usually one would also like to display which companies [operate in a given area](#spot_companies) and check if that company requires a dropoff address and allows automated bookings. To check if company supports automated bookings the `automatedBooking` attribute on a company should be checked. If this is `false` our API cannot automatically book a taxi on i.e. trying to place a booking will fail but you may use returned phone number to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
+
+Checking if a company requires a dropoff address is done by looking at `destinationRequired` boolean attribute. When `true` both a `pickup` and `dropoff` structure must be sent in booking request.
 
 
 ## Authentication
 
-You authenticate by sending token either as an `Authorization` header:
+You authenticate each request by sending a token either as an `Authorization` header:
 
 	curl https://api.clickataxi.com \
 		-H "Authorization: Token token=\"OAUTH-TOKEN\""
@@ -159,8 +165,8 @@ All parameters are optional unless specified otherwise.
 	        "ref": "COPENHAGEN AIRPORT",
 	        "name": "Københavns Lufthavn",
 	        "location": {
-	            "streetName": "Lufthavnsboulevarden",
 	            "houseNumber": "6",
+	            "streetName": "Lufthavnsboulevarden",
 	            "zipCode": "2770",
 	            "city": "Copenhagen",
 	            "country": "DK",
