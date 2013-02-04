@@ -476,6 +476,8 @@ All parameters are optional unless specified otherwise.
 
 `statuses` List of statuses associated with booking. Statuses are localized based on clients language. See [clients/:clientId/bookings/:bookingId](#get_client_booking) for details about these statuses.
 
+`state` Current state of booking as `active`, `successful` or `unsuccessful`. 
+
 
 #### Example request
 
