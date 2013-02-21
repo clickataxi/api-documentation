@@ -664,6 +664,8 @@ Creates a new client which is necessary before a booking can be created. A clien
 
 `guid` Optional. A unique identifier for client which you may use internally since it will never change. If not specified you should read the returned `guid` attribute in response payload and store that when updating clients.
 
+`pushToken` A string with a token used for sending push notifications to clients. This parameter is optional. 
+
 
 #### Example request
 
@@ -739,7 +741,8 @@ Updates an existing client. Only clients created by you can be updated.
 	    "phone": "+4561715099",
 	    "language": "en",
 	    "email": "john@doe.com",
-	    "guid": "1003a3bb8d4a40f08065e640621fee63"
+	    "guid": "1003a3bb8d4a40f08065e640621fee63",
+	    "pushToken": "07a50578c0c94d0da276aab1a9c9166b"
 	}
 
 
