@@ -14,6 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p, ul, ol, table, pre, dl {
   margin:0 0 20px;
+  font: 12px 'lucida grande', tahoma, verdana, arial, sans-serif;
 }
 
 h1, h2, h3 {
@@ -71,7 +72,7 @@ blockquote {
 
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#696;
+  color:green;
   font-size:12px;
 }
 
@@ -80,6 +81,7 @@ pre {
   background: #f8f8f8;  
   border-radius:5px;
   border:1px solid #e5e5e5;
+  border-left-width: 16px;
   overflow-x: auto;
 }
 
