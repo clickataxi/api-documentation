@@ -185,6 +185,47 @@ All parameters are optional unless specified otherwise.
 	]
 
 
+### <a id="get_place_by_reference"></a> GET /places
+
+Returns a place based on a reference.
+
+
+#### Request parameters
+
+All parameters are optional unless specified otherwise.
+
+`googlePlacesRef` _required_ String with reference to a Google Place object.
+
+`language` ISO 639-1 language code for getting localized names for returned place (example `da`)
+
+
+#### Example request
+
+	curl https://api.clickataxi.com/places?googlePlacesRef=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&language=en \
+		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
+		-H 'Accept: application/vnd.clickataxi.v2+json'
+
+
+#### Example response
+
+	HTTP/1.0 200 OK
+	Content-Type: application/json; charset=utf-8
+
+	{
+	    "location": {
+	        "streetName": "Pirrama Road",
+	        "houseNumber": "48",
+	        "zipCode": "2009",
+	        "city": "Pyrmont",
+	        "country": "AU",
+	        "lat": -33.866975,
+	        "lng": 151.195677
+	    },
+	    "googlePlacesRef": "CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g"
+	}
+
+
+
 ### <a id="get_company"></a> GET /companies/:companyId
 
 Returns details about a specific company. Use this operation to a high-level details such as name, phone number and rating for a company. Operation will not return vehicle types, destination required details, etc since these are based on region and could be requested by using [/companies/spot](#spot_companies) instead.
@@ -1038,6 +1079,75 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 	    "stars": 4,
 	    "review": "Funny driver"
 	}
+
+
+### GET /nearbysearches
+
+Searches for addresses or POIs within a given radius. More details can be fetched for a specific result using [/places](#get_place_by_reference).
+
+
+#### Request parameters
+
+`latlng` _required*_ Latitude and longitude of origin (example `55.10,12.13`)
+
+`keyword` _required*_ String with value to be searched (example `jagtvej`)
+
+`language` ISO 639-1 language code for getting localized names for returned results (example `da`). Defaults to `en`
+
+`radius` Radius of results to be returned. Defaults to `500` (meters)
+
+
+#### Example request
+
+	curl https://api.clickataxi.com/nearbysearches?latlng=55.10,12.13&keyword=jagtvej \
+		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
+		-H 'Accept: application/vnd.clickataxi.v2+json' 
+
+#### Example response
+
+	HTTP/1.1 200 OK
+	Content-Type: application/json; charset=utf-8
+
+	[
+	    {
+	        "name": "Jagtvej, København, Danmark",
+	        "categories": [
+	            {
+	                "type": "route"
+	            },
+	            {
+	                "type": "geocode"
+	            }
+	        ],
+	        "googlePlacesRef": "ClRKAAAAmdD4k15JPkUFOfRyfvqI_qKmnv6N2HIixmDHPIqXY8ozelIPT9tFaUyH2X9JgbB1gBXVzK0GHSSAECIb-NgCY6nXbZtOqnsBir1ItZE_qSMSEByNk4HPqp5kE7jO8OBtIw8aFEtxS2bNJNLpKgnN5U46sJpO5hcg"
+	    },
+	    {
+	        "name": "Jagtvej, Næstved, Danmark",
+	        "categories": [
+	            {
+	                "type": "route"
+	            },
+	            {
+	                "type": "geocode"
+	            }
+	        ],
+	        "googlePlacesRef": "ClRIAAAAc6uv1MdG8Y84yAb27L_vLTVVDSIeIHx-3biuduq-Z_Yy5aE9jUCUucQhQfmO60DNStMmRr_qYvy8nk8Sfz0wH0ew2xvFbupbpH_7z14qFl8SEBxP_y16aGQvDH7Xv0P7g8UaFEZsfVyyOBUUuAARjBDCQT1Q4P-Z"
+	    },
+	    {
+	        "name": "Jagtvej, Odense, Danmark",
+	        "categories": [
+	            {
+	                "type": "route"
+	            },
+	            {
+	                "type": "geocode"
+	            }
+	        ],
+	        "googlePlacesRef": "ClRGAAAAfI2vzg2teMNMdXQk3BC9t7cgPOq7ciT1Jp31fg9yQYzCNaCN598Docun_C0qIjnwHr349by-r8StRwFt55sbDHWNFjxRi1y87oHul00dMPcSEBhiRbeMNW8cgr1SAxUpRVcaFAmp99k3bJhP9e6t9nUyQz7lRKZH"
+	    }
+	]
+
+
 
 <!--
 ### GET /geocodings
