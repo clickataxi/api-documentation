@@ -297,7 +297,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 		<td>Bikes may be brought with you</td>
 	</tr>
 	<tr>
-		<td>animals</td>
+		<td>animal</td>
 		<td>Animals may be brought onboard</td>
 	</tr>
 	<tr>
