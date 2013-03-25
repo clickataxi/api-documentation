@@ -185,7 +185,7 @@ All parameters are optional unless specified otherwise.
 	]
 
 
-### <a id="get_place_by_reference"></a> GET /places
+### <a id="get_place_by_reference"></a> GET /places/:placeRef
 
 Returns a place based on a reference.
 
