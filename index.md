@@ -1090,7 +1090,7 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 `latlng` _required*_ Latitude and longitude of origin (example `55.10,12.13`)
 
-`keyword` _required*_ String with value to be searched (example `jagtvej`)
+`query` _required*_ String with value to be searched (example `jagtvej`)
 
 `language` ISO 639-1 language code for getting localized names for returned results (example `da`). Defaults to `en`
 
@@ -1110,7 +1110,8 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 	[
 	    {
-	        "name": "Jagtvej, København, Danmark",
+	        "ref": "ClRKAAAABUa0QH9RPJ4TyqNrPHPPRXcL1Yn9VBGJKFoJzvB0FC2vym_qmQwPQmytzxAXeZtFapkP9VjJ0tK0aRJByGYXCLWLU8mCPxMNF-KdWHDZTK0SEFWe8MTDCECOZD4pvlLoP8UaFAcj8JzkrZUqBXD5tZ6zX9a3pda7",
+	        "name": "Jagtvej, Copenhagen, Denmark",
 	        "categories": [
 	            {
 	                "type": "route"
@@ -1119,10 +1120,11 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 	                "type": "geocode"
 	            }
 	        ],
-	        "googlePlacesRef": "ClRKAAAAmdD4k15JPkUFOfRyfvqI_qKmnv6N2HIixmDHPIqXY8ozelIPT9tFaUyH2X9JgbB1gBXVzK0GHSSAECIb-NgCY6nXbZtOqnsBir1ItZE_qSMSEByNk4HPqp5kE7jO8OBtIw8aFEtxS2bNJNLpKgnN5U46sJpO5hcg"
+	        "type": "google"
 	    },
 	    {
-	        "name": "Jagtvej, Næstved, Danmark",
+	        "ref": "ClRIAAAAUj6yruZLNXb-3_Qh8RBpnI574KGYfuPCGFFFkBit0Bztz8HcJQziEjSUU6bS4NseS16F2-mzHqkoEM-5Bw7HOUEo3amrS9HIXcK0alu4ooISEMP5GwkWAxDjWM61fxXHIgcaFPIC1p6JqjC46AEujAQjeF5MjopQ",
+	        "name": "Jagtvej, Naestved, Denmark",
 	        "categories": [
 	            {
 	                "type": "route"
@@ -1131,19 +1133,7 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 	                "type": "geocode"
 	            }
 	        ],
-	        "googlePlacesRef": "ClRIAAAAc6uv1MdG8Y84yAb27L_vLTVVDSIeIHx-3biuduq-Z_Yy5aE9jUCUucQhQfmO60DNStMmRr_qYvy8nk8Sfz0wH0ew2xvFbupbpH_7z14qFl8SEBxP_y16aGQvDH7Xv0P7g8UaFEZsfVyyOBUUuAARjBDCQT1Q4P-Z"
-	    },
-	    {
-	        "name": "Jagtvej, Odense, Danmark",
-	        "categories": [
-	            {
-	                "type": "route"
-	            },
-	            {
-	                "type": "geocode"
-	            }
-	        ],
-	        "googlePlacesRef": "ClRGAAAAfI2vzg2teMNMdXQk3BC9t7cgPOq7ciT1Jp31fg9yQYzCNaCN598Docun_C0qIjnwHr349by-r8StRwFt55sbDHWNFjxRi1y87oHul00dMPcSEBhiRbeMNW8cgr1SAxUpRVcaFAmp99k3bJhP9e6t9nUyQz7lRKZH"
+	        "type": "google"
 	    }
 	]
 
