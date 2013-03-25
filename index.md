@@ -1081,7 +1081,7 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 	}
 
 
-### GET /nearbysearches
+### GET /places/search
 
 Searches for addresses or POIs within a given radius. More details can be fetched for a specific result using [/places](#get_place_by_reference).
 
@@ -1094,12 +1094,12 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 `language` ISO 639-1 language code for getting localized names for returned results (example `da`). Defaults to `en`
 
-`radius` Radius of results to be returned. Defaults to `500` (meters)
+`radius` Radius of results to be returned. Defaults to `5000` (meters)
 
 
 #### Example request
 
-	curl https://api.clickataxi.com/nearbysearches?latlng=55.10,12.13&keyword=jagtvej \
+	curl https://api.clickataxi.com/places/search?latlng=55.10,12.13&keyword=jagtvej \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.clickataxi.v2+json' 
 
