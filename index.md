@@ -194,14 +194,16 @@ Returns a place based on a reference.
 
 All parameters are optional unless specified otherwise.
 
-`googlePlacesRef` _required_ String with reference to a Google Place object.
+`ref` _required_ String with reference of place to fetch
 
 `language` ISO 639-1 language code for getting localized names for returned place (example `da`)
+
+`type` Type of place to retrieve e.g. `google` if place is a Google type. The 
 
 
 #### Example request
 
-	curl https://api.clickataxi.com/places?googlePlacesRef=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&language=en \
+	curl https://api.clickataxi.com/places/CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&language=en&type=google \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.clickataxi.v2+json'
 
@@ -212,6 +214,7 @@ All parameters are optional unless specified otherwise.
 	Content-Type: application/json; charset=utf-8
 
 	{
+	    "ref": "CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g",
 	    "location": {
 	        "streetName": "Pirrama Road",
 	        "houseNumber": "48",
@@ -221,7 +224,7 @@ All parameters are optional unless specified otherwise.
 	        "lat": -33.866975,
 	        "lng": 151.195677
 	    },
-	    "googlePlacesRef": "CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g"
+	    "type": "google"
 	}
 
 
@@ -1097,11 +1100,21 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 `radius` Radius of results to be returned. Defaults to `5000` (meters)
 
 
+#### Response parameters
+
+`ref` Unique reference of Place.
+
+`categories` Array of categories.
+
+`type` Type of place. Currently supports `google`.
+
+
 #### Example request
 
 	curl https://api.clickataxi.com/places/search?latlng=55.10,12.13&keyword=jagtvej \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.clickataxi.v2+json' 
+
 
 #### Example response
 
