@@ -702,7 +702,7 @@ Creates a new client which is necessary before a booking can be created. A clien
 
 `phone` Number of client formatted as a [E.164](http://en.wikipedia.org/wiki/E.164) number.
 
-`language` ISO 639-1 language code of client (example `da` for Danish). This value is used to determine in which language status messages should be delivered.
+`language` ISO 639-1 language code of client (example `da` for Danish). This value is used to determine in which language status messages should be delivered. Supported values are ["en", "es", "de", "it", "fr", "pt", "da", "sv", "nb"].
 
 `os` Type of OS used by client, if applicable. Types can be either 'ios', 'android' or 'windowsPhone'.
 
