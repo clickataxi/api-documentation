@@ -288,7 +288,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 `eta` An estimated time of arrival for a taxi within this area at requested time.
 
-`properties.name[vehicleTypes]` A list of available vehicle types offered by company. The `ref` attribute should be used as `vehicleType` attribute when ordering a taxi. List vary from company to company but may be cached by company. Consider rechecking this attribute over time, though since taxi companies might start to support more vehicle types.
+`properties.name[vehicleTypes]` A list of available vehicle types offered by company. The `ref` attribute should be used as `vehicleType` attribute when ordering a taxi. List vary from company to company but may be cached by company. Recheck this attribute regularly since taxi companies might start to support more vehicle types. The list below shows some of the available types but this list will vary and thus you should not hardcode or limit bookings to only these types. Display them all and allow your users to select one of them.
 
 <table>
 	<tr>
@@ -296,8 +296,8 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>fourSeaterAny</td>
-		<td>Standard four seater car</td>
+		<td>taxi</td>
+		<td>Standard taxi</td>
 	</tr>
 	<tr>
 		<td>fourSeaterStationCar</td>
@@ -316,8 +316,8 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 		<td>Seven seater car</td>
 	</tr>
 	<tr>
-		<td>eightSeater</td>
-		<td>Eight seater car</td>
+		<td>executive</td>
+		<td>Executive car</td>
 	</tr>
 	<tr>
 		<td>premium</td>
@@ -1091,13 +1091,13 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 #### Request parameters
 
-`latlng` _required*_ Latitude and longitude of origin (example `55.10,12.13`)
-
 `query` _required*_ String with value to be searched (example `jagtvej`)
 
 `language` ISO 639-1 language code for getting localized names for returned results (example `da`). Defaults to `en`
 
-`radius` Radius of results to be returned. Defaults to `5000` (meters)
+`latlng` Latitude and longitude of origin (example `55.10,12.13`)
+
+`radius` Radius of results to be returned. Only used if `latlng` is specified. Defaults to `5000` (meters)
 
 
 #### Response parameters
@@ -1106,7 +1106,7 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 `categories` Array of categories.
 
-`type` Type of place. Currently supports `google`.
+`type` Type of place. Currently supports `internal` and `google`.
 
 
 #### Example request
