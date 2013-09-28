@@ -1151,7 +1151,7 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 	]
 
 
-### POST /quotes (pickup: {0}, dropoff: {1})
+### POST /quotes
 
 Requests a price quote from `pickup` to `dropoff`. 
 
