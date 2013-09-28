@@ -1151,6 +1151,71 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 	]
 
 
+### POST /quotes (pickup: {0}, dropoff: {1})
+
+Requests a price quote from `pickup` to `dropoff`. 
+
+
+#### Request parameters
+
+`pickup` _required_* Location structure with pickup details
+
+`dropoff` _required_* Location structure with dropoff details
+
+`vehicleType` _required_* Type of car which is picking up client. Valid values are returned in [companies/spot](#spot_companies) operations (`vehicleTypes` attribute)
+
+`quotingAt` Optional time of price quote. Prices might vary over time e.g. it might be more expensive to order a car friday evening than wednesday at noon
+
+
+#### Response parameters
+
+`ref` Unique reference of Place.
+
+`categories` Array of categories.
+
+`type` Type of place. Currently supports `internal` and `google`.
+
+
+#### Example request
+
+Requesting a price quote from Amaliegade to Jagtvej on Christmas Eve.
+
+	curl https://api.clickataxi.com/quotes \
+		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
+		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Content-type: application/json' \
+		-d '{ "quotingAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "dropoff":{"streetName":"Jagtvej","houseNumber":"111","zipCode":"2200","city":"Copenhagen N","country":"DK","lat":55.696406,"lng":12.550911}, "vehicleType": "taxi" }'
+
+
+#### Example response
+
+	{
+	  "pickup": {
+	    "streetName": "Amaliegade",
+	    "houseNumber": "36",
+	    "zipCode": "1256",
+	    "city": "Copenhagen K",
+	    "country": "DK",
+	    "lat": 55.68,
+	    "lng": 12.59
+	  },
+	  "dropoff": {
+	    "streetName": "Jagtvej",
+	    "houseNumber": "111",
+	    "zipCode": "2200",
+	    "city": "Copenhagen N",
+	    "country": "DK",
+	    "lat": 55.696406,
+	    "lng": 12.550911
+	  },
+	  "vehicleType": "taxi",
+	  "price": {
+	    "value": 179.0,
+	    "currency": "Kr."
+	  },
+	  "quotingAt": "2012-12-24T20:00:00Z",
+	  "language": "en"
+	}
 
 <!--
 ### GET /geocodings
