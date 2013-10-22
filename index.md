@@ -267,7 +267,9 @@ Returns details about a specific company. Use this operation to a high-level det
 	}
 
 
-### <a id="spot_companies"></a> GET /companies/spot
+### <a id="spot_companies"></a> GET /companies/spot (obsolete)
+
+This operation is now obsolete. Use [/companies/lookup](#lookup_companies) instead.
 
 Returns a list of taxi companies operating in specified area. List is ordered by priority and if list is empty, no taxi companies were found to operate in specified area.
 
