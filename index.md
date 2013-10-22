@@ -247,6 +247,8 @@ Returns details about a specific company. Use this operation to a high-level det
 
 `destinationRequired` True if company requires a dropoff address for handling orders; false otherwise
 
+`minimumPreBooking` & `maximumPreBooking` Define an interval for pre-booking, value in seconds (both can be empty)
+
 
 #### Example request
 
