@@ -65,7 +65,7 @@ You may send a `?callback` parameter to any GET operations to have results wrapp
 
 ## Operations
 
-### <a id="authorizations"></a> POST /authorizations
+### <a id="authorizations" href="#authorizations">POST /authorizations</a>
 
 Requests an authorization token by posting via basic authentication. Upon successful authentication a 256-bit token will be returned which should be used for future requests. These access tokens doesn't by default expire but it might become invalid over time. Using an invalid token in requests will result in `401 Unauthorized` responses and you should in that case re-issue a request for a new token.
 
@@ -86,7 +86,7 @@ Requests an authorization token by posting via basic authentication. Upon succes
 	}
 
 
-### <a id="nearby_places"></a> GET /places/nearby
+### <a id="nearby_places" href="#nearby_places">GET /places/nearby</a>
 
 Returns list of nearby Point Of Interests (POIs). This could include airports, metro- or bus stations, restaurants and others. One POI doesn't necessarily have a category or it might have more than one category.
 
@@ -185,7 +185,7 @@ All parameters are optional unless specified otherwise.
 	]
 
 
-### <a id="get_place_by_reference"></a> GET /places/:placeRef
+### <a id="get_place_by_reference" href="#get_place_by_reference">GET /places/:placeRef</a>
 
 Returns a place based on a reference.
 
@@ -229,7 +229,7 @@ All parameters are optional unless specified otherwise.
 
 
 
-### <a id="get_company"></a> GET /companies/:companyId
+### <a id="get_company" href="#get_company">GET /companies/:companyId</a>
 
 Returns details about a specific company. Use this operation to a high-level details such as name, phone number and rating for a company. Operation will not return vehicle types, destination required details, etc since these are based on region and could be requested by using [/companies/spot](#spot_companies) instead.
 
@@ -267,7 +267,7 @@ Returns details about a specific company. Use this operation to a high-level det
 	}
 
 
-### <a id="spot_companies"></a> GET /companies/spot (obsolete)
+### <a id="spot_companies" href="#spot_companies">GET /companies/spot (obsolete)</a>
 
 This operation is now obsolete. Use [/companies/lookup](#lookup_companies) instead.
 
@@ -413,7 +413,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	]
 
 
-### <a id="lookup_companies"></a> GET /companies/lookup
+### <a id="lookup_companies" href="#lookup_companies">GET /companies/lookup</a>
 
 Requests address, taxi company and address formats for a given location.
 
@@ -496,7 +496,7 @@ Requests address, taxi company and address formats for a given location.
 	}
 
 
-### GET /clients/:clientId/bookings
+### <a id="client_bookings" href="#client_bookings">GET /clients/:clientId/bookings</a>
 
 Returns list of all bookings created by client with specified id. Only bookings for clients you have created can be requested. Requesting bookings for a client you haven't created will return a 404 error message.
 
@@ -696,7 +696,7 @@ All parameters are optional unless specified otherwise.
 	]
 
 
-### <a id="clients"></a> POST /clients
+### <a id="clients" href="#clients">POST /clients</a>
 
 Creates a new client which is necessary before a booking can be created. A client must have at least a name and phone number. Both name and phone number might be forwarded to a taxi company in order to book taxis, so make sure your privacy policy tells your users about it. An SMS might be sent to client for verification purposes.
 
@@ -739,7 +739,7 @@ Creates a new client which is necessary before a booking can be created. A clien
 	}
 
 
-### GET /clients/:clientId
+### <a id="client_by_id" href="#client_by_id">GET /clients/:clientId</a>
 
 Get details about an existing client. Only clients created by you can be fetched. Requesting other clients will return in a 404 Not Found response.
 
@@ -764,7 +764,7 @@ Get details about an existing client. Only clients created by you can be fetched
 	    "guid": "1003a3bb8d4a40f08065e640621fee63"
 	}
 
-### PUT /clients/:clientId
+### <a id="update_client" href="#update_client">PUT /clients/:clientId</a>
 
 Updates an existing client. Only clients created by you can be updated.
 
@@ -794,7 +794,7 @@ Updates an existing client. Only clients created by you can be updated.
 	}
 
 
-### <a id="post_clients_bookings"></a> POST /clients/:clientId/bookings
+### <a id="create_booking" href="#create_booking">POST /clients/:clientId/bookings</a>
 
 Requests a new taxi booking for an existing [client](#clients). An immediate booking is requested by excluding `arrivalAt` attribute from body. A pre-booking should always have an `arrivalAt` in its body. Notice, some taxi companies require a destination address so a call to [/companies/spot](#spot_companies) should be made before booking in a new area. Check `destinationRequired` attribute on response to find out if a destination address is required in that area.
 
@@ -868,7 +868,7 @@ TODO: show example where "pickup" is replaced with "places" reference
 -->
 
 
-### <a id="get_client_booking"></a> GET /clients/:clientId/bookings/:id
+### <a id="get_client_booking" href="#get_client_booking">GET /clients/:clientId/bookings/:id</a>
 
 Returns full details about an existing booking created by client.
 
@@ -1042,7 +1042,7 @@ Returns full details about an existing booking created by client.
 	}
 
 
-### DELETE /clients/:clientId/bookings/:bookingId
+### <a id="cancel_booking" href="#cancel_booking">DELETE /clients/:clientId/bookings/:bookingId</a>
 
 Cancels a booking. The method might fail with a `400 Bad Request` response in case a booking can't be canceled e.g. if taxi is already on its way or at the pickup address. A `422 Unprocessed Entity` response is returned in case specified clientId or bookingId isn't valid.
 
@@ -1061,7 +1061,7 @@ When booking has been canceled successfully
 	HTTP/1.1 200 OK
 
 
-### POST /ratings
+### <a id="rating" href="#rating">POST /ratings</a>
 
 Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are required. Attribute `stars` must be a valid integer between 1 and 5 (both inclusive).
 
@@ -1088,7 +1088,7 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 	}
 
 
-### GET /places/search
+### <a id="search_places" href="#search_places">GET /places/search</a>
 
 Searches for addresses or POIs within a given radius. More details can be fetched for a specific result using [/places](#get_place_by_reference).
 
@@ -1155,7 +1155,7 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 	]
 
 
-### POST /quotes
+### <a id="quotes" href="#quotes">POST /quotes</a>
 
 Requests a price quote from `pickup` to `dropoff`. 
 
