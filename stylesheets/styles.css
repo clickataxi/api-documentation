@@ -51,7 +51,7 @@ a {
 	text-decoration: none;
 }
 
-a > h3 {
+h3 > a {
 	color: #669;
 	font-weight: bold;
 }
