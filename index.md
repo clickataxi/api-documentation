@@ -794,7 +794,7 @@ Updates an existing client. Only clients created by you can be updated.
 	}
 
 
-### <a id="create_booking" href="#create_booking">POST /clients/:clientId/bookings</a>
+### <a id="post_clients_bookings" href="#post_clients_bookings">POST /clients/:clientId/bookings</a>
 
 Requests a new taxi booking for an existing [client](#clients). An immediate booking is requested by excluding `arrivalAt` attribute from body. A pre-booking should always have an `arrivalAt` in its body. Notice, some taxi companies require a destination address so a call to [/companies/spot](#spot_companies) should be made before booking in a new area. Check `destinationRequired` attribute on response to find out if a destination address is required in that area.
 
