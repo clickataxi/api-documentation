@@ -415,7 +415,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 ### <a id="lookup_companies" href="#lookup_companies">GET /companies/lookup</a>
 
-Requests address, taxi company and address formats for a given location.
+Requests address, company and address formats for a given location.
 
 
 #### Request parameters
@@ -527,7 +527,7 @@ All parameters are optional unless specified otherwise.
 
 `dropoff` Full Location object with dropoff details (only returned if available).
 
-`vehicleType` Type of car which is picking up client. Valid values are returned in [companies/spot](#spot_companies) operations (`vehicleTypes` attribute)
+`vehicleType` Type of car which is picking up client. Valid values are returned in [companies/lookup](#lookup_companies) operations (`vehicleTypes` attribute)
 
 `arrivalAt` Date and time taxi will arrive/arrived.
 
