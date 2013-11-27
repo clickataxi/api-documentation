@@ -464,28 +464,37 @@ Requests address, taxi company and address formats for a given location.
 	        "name": "greentomatocars",
 	        "destinationRequired": true,
 	        "automatedBooking": true,
-	        "properties": [
-	            {
-	                "name": "vehicleTypes",
-	                "values": [
-	                    {
-	                        "ref": "fourSeaterAny",
-	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-any_logo.png"
-	                    },
-	                    {
-	                        "ref": "fiveSeater",
-	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_five-seater_logo.png"
-	                    },
-	                    {
-	                        "ref": "fiveSeaterBlackCab",
-	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_five-seater-black-cab_logo.png"
-	                    }
-	                ],
-	                "mutuallyExclusive": true
-	            }
-	        ],
 	        "rating": 4.0,
 	        "phone": "+442083808900",
+		    "vehicleTypes": [
+		      {
+		        "id": "taxi",
+		        "name": "4 x",
+		        "description": "Licensed taxi vehicle",
+		        "extendedDescription": "Metered and regulated taxi service. Rates depend on day/time according to the taxi regulation.",
+		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/properties/vehicle-types_four-seater-any_logo.png",
+		        "seats": 4,
+		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_taxi_top@2x.png"
+		      },
+		      {
+		        "id": "drivrExecutive",
+		        "name": "Executive",
+		        "description": "Mercedes S-class or similar",
+		        "extendedDescription": "High-end car, suited driver. Daytime / nighttime rates apply. Final price, all-inclusive, is reflected in the rates above. All vehicles and drivers are licensed.",
+		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_side@2x.png",
+		        "seats": 4,
+		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_top@2x.png"
+		      },
+		      {
+		        "id": "grande",
+		        "name": "Executive XL",
+		        "description": "6 Seater SUV or VAN",
+		        "extendedDescription": "Classy MPV, suited driver. Daytime / nighttime rates apply. Final price, all-inclusive, is reflected in the rates above. All vehicles and drivers are licensed.",
+		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_side@2x.png",
+		        "seats": 6,
+		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_top@2x.png"
+		      }
+		    ],
 	        "eta": 14
 	    },
 	    "addressFormat": {
