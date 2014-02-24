@@ -2,21 +2,21 @@
 layout: default
 ---
 
-The Click A Taxi API provides the ability to create and retrieve required information in order to book taxis globally.
+The Drivr API provides the ability to create and retrieve required information in order to book taxis globally.
 
 ## Introduction
 
-Every URL is in the format https://api.clickataxi.com/:resource[/:action[?:params]] such as https://api.clickataxi.com/places/nearby to get a list of nearby places.
+Every URL is in the format https://api.drivr.com/:resource[/:action[?:params]] such as https://api.drivr.com/places/nearby to get a list of nearby places.
 
 Every request must include a `User-Agent` header with your application name and an url or email address. We need this for tracking purposes and we might contact you in case this information isn't probably filled out. An example of a good header would be `FooBooking-Version5 (http://foo-bookings.com/)`. Requests without this header might get a `400 Bad Request` in future versions of the API.
 
 The `Accept` header specifies which format to return. Only `application/json` is supported.
 
-Returned format may be overridden by appending a format parameter to a request e.g. https://api.clickataxi.com/companies?format=json.
+Returned format may be overridden by appending a format parameter to a request e.g. https://api.drivr.com/companies?format=json.
 
-Clients must include an `Accept` header with a custom Click A Taxi mime type to specify which version of the API to use e.g.
+Clients must include an `Accept` header with a custom Drivr mime type to specify which version of the API to use e.g.
 
-	application/vnd.clickataxi[.version]+[type]
+	application/vnd.drivr[.version]+[type]
 
 If this header isn't specified the latest API version is used but it's highly recommended to specific a specific version since future revisions might not be fully backward compatible.
 
@@ -48,12 +48,12 @@ Checking if a company requires a dropoff address is done by looking at `destinat
 
 You authenticate each request by sending a token either as an `Authorization` header:
 
-	curl https://api.clickataxi.com \
+	curl https://api.drivr.com \
 		-H "Authorization: Token token=\"OAUTH-TOKEN\""
 
 Or by appending it as an `access_token` parameter:
 
-	curl https://api.clickataxi.com?access_token=OAUTH-TOKEN
+	curl https://api.drivr.com?access_token=OAUTH-TOKEN
 
 Tokens can be initially acquired programmatically using basic authentication through [/authorizations](#authorizations).
 
@@ -71,9 +71,9 @@ Requests an authorization token by posting via basic authentication. Upon succes
 
 #### Example request
 
-	curl https://api.clickataxi.com/authorizations \
+	curl https://api.drivr.com/authorizations \
 		-u john:doe -d '' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json'
 
 #### Example response
@@ -149,9 +149,9 @@ All parameters are optional unless specified otherwise.
 
 #### Example request
 
-	curl https://api.clickataxi.com/places/nearby?latlng=55.68%2C12.59&radius=1000&language=da \
+	curl https://api.drivr.com/places/nearby?latlng=55.68%2C12.59&radius=1000&language=da \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 
 #### Example response
@@ -178,7 +178,7 @@ All parameters are optional unless specified otherwise.
 	        "categories": [
 	            {
 	                "type": "airport",
-	                "iconUrl": "http://resource.clickataxi.com/icons/place_type_airport@2x.png"
+	                "iconUrl": "http://resource.drivr.com/icons/place_type_airport@2x.png"
 	            }
 	        ]
 	    }
@@ -203,9 +203,9 @@ All parameters are optional unless specified otherwise.
 
 #### Example request
 
-	curl https://api.clickataxi.com/places/CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&language=en&type=google \
+	curl https://api.drivr.com/places/CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&language=en&type=google \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 
 #### Example response
@@ -252,16 +252,16 @@ Returns details about a specific company. Use this operation to a high-level det
 
 #### Example request
 
-	curl https://api.clickataxi.com/companies/1081132172 \
+	curl https://api.drivr.com/companies/1081132172 \
 		-H 'Authorization: Token token="11113a3bb8d4a40f08065e640621fee63"'
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 #### Example response
 
 	{
 	    "id": "1081132172",
 	    "name": "Taxi4x35",
-	    "logoUrl": "http://resource.clickataxi.com/logos/taxi4x35.png",
+	    "logoUrl": "http://resource.drivr.com/logos/taxi4x35.png",
 	    "phone": "+4535309184",
 	    "rating": 4.0
 	}
@@ -357,9 +357,9 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 
 #### Example request
 
-	curl https://api.clickataxi.com/companies/spot?zipCode=2200&country=dk \
+	curl https://api.drivr.com/companies/spot?zipCode=2200&country=dk \
 		-H 'Authorization: Token token="11113a3bb8d4a40f08065e640621fee63"'
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 #### Example response
 
@@ -377,11 +377,11 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	                "values": [
 	                    {
 	                        "ref": "fourSeaterAny",
-	                        "iconUrl": "http://resource.clickataxi.com/icons/four-seater-any@2x.png"
+	                        "iconUrl": "http://resource.drivr.com/icons/four-seater-any@2x.png"
 	                    },
 	                    {
 	                        "ref": "sixSeater",
-	                        "iconUrl": "http://resource.clickataxi.com/icons/six-seater@2x.png"
+	                        "iconUrl": "http://resource.drivr.com/icons/six-seater@2x.png"
 	                    }
 	                ],
 	                "mutuallyExclusive": true
@@ -391,15 +391,15 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	                "values": [
 	                    {
 	                        "ref": "childSeat",
-	                        "iconUrl": "http://resource.clickataxi.com/icons/child_seat@2x.png"
+	                        "iconUrl": "http://resource.drivr.com/icons/child_seat@2x.png"
 	                    },
 	                    {
 	                        "ref": "animals",
-	                        "iconUrl": "http://resource.clickataxi.com/icons/animals@2x.png"
+	                        "iconUrl": "http://resource.drivr.com/icons/animals@2x.png"
 	                    },
 	                    {
 	                        "ref": "bike",
-	                        "iconUrl": "http://resource.clickataxi.com/icons/bike@2x.png"
+	                        "iconUrl": "http://resource.drivr.com/icons/bike@2x.png"
 	                    }
 	                ],
 	                "mutuallyExclusive": false
@@ -436,9 +436,9 @@ Requests address, company and address formats for a given location.
 
 #### Example request
 
-	curl https://api.master.clickataxi.com/companies/lookup?language=en-GB&latlng=51%2E509205,-0%2E146690 \
+	curl https://api.staging.drivr.com/companies/lookup?language=en-GB&latlng=51%2E509205,-0%2E146690 \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' 
+		-H 'Accept: application/vnd.drivr.v2+json' 
 
 
 #### Example response
@@ -472,27 +472,27 @@ Requests address, company and address formats for a given location.
 		        "name": "4 x",
 		        "description": "Licensed taxi vehicle",
 		        "extendedDescription": "Metered and regulated taxi service. Rates depend on day/time according to the taxi regulation.",
-		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/properties/vehicle-types_four-seater-any_logo.png",
+		        "iconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/properties/vehicle-types_four-seater-any_logo.png",
 		        "seats": 4,
-		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_taxi_top@2x.png"
+		        "mapIconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_taxi_top@2x.png"
 		      },
 		      {
 		        "id": "drivrExecutive",
 		        "name": "Executive",
 		        "description": "Mercedes S-class or similar",
 		        "extendedDescription": "High-end car, suited driver. Daytime / nighttime rates apply. Final price, all-inclusive, is reflected in the rates above. All vehicles and drivers are licensed.",
-		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_side@2x.png",
+		        "iconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_side@2x.png",
 		        "seats": 4,
-		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_top@2x.png"
+		        "mapIconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_top@2x.png"
 		      },
 		      {
 		        "id": "grande",
 		        "name": "Executive XL",
 		        "description": "6 Seater SUV or VAN",
 		        "extendedDescription": "Classy MPV, suited driver. Daytime / nighttime rates apply. Final price, all-inclusive, is reflected in the rates above. All vehicles and drivers are licensed.",
-		        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_side@2x.png",
+		        "iconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_side@2x.png",
 		        "seats": 6,
-		        "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_top@2x.png"
+		        "mapIconUrl": "https://resource-staging-drivr-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_top@2x.png"
 		      }
 		    ],
 	        "eta": 14
@@ -538,9 +538,9 @@ All parameters are optional unless specified otherwise.
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients/61241/bookings?since=2012-01-01 \
+	curl https://api.drivr.com/clients/61241/bookings?since=2012-01-01 \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-Type: application/json' 
 
 
@@ -726,9 +726,9 @@ Creates a new client which is necessary before a booking can be created. A clien
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients \
+	curl https://api.drivr.com/clients \
 		-H 'Authorization: Token token="1993a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json' \
 		-d '{ "name": "Doe", "phone": "+4561616161", "os": "android" }'
 
@@ -754,9 +754,9 @@ Get details about an existing client. Only clients created by you can be fetched
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients/61449
+	curl https://api.drivr.com/clients/61449
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"'
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 #### Example response
 
@@ -779,9 +779,9 @@ Updates an existing client. Only clients created by you can be updated.
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients/61449
+	curl https://api.drivr.com/clients/61449
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"'
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 		-H 'Content-type: application/json'
 		-d '{ "name": "Jobs", "phone": "+4561715099" }'
 		-X PUT
@@ -828,16 +828,16 @@ A success response means our system has accepted your request for a taxi but not
 
 Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` structure may include a `placeRef` attribute instead of a full address in case you want to book at a [Point Of Interest](#nearby_places). Client is bringing a child so a child seat is requested as a service too.
 
-	curl https://api.clickataxi.com/clients/9535253/bookings \
+	curl https://api.drivr.com/clients/9535253/bookings \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json' \
 		-d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "vehicleType": "fourSeaterAny", "services": "childSeat" }'
 
 #### Example response
 
 	HTTP/1.0 201 Created
-	Location: https://api.clickataxi.com/clients/9535253/bookings/483233
+	Location: https://api.drivr.com/clients/9535253/bookings/483233
 	Content-Type: application/json; charset=utf-8
 
 	{
@@ -976,9 +976,9 @@ Returns full details about an existing booking created by client.
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients/61241/bookings/923880 \
+	curl https://api.drivr.com/clients/61241/bookings/923880 \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json'
 
 #### Example response
@@ -998,11 +998,11 @@ Returns full details about an existing booking created by client.
 	                "values": [
 	                    {
 	                        "ref": "fourSeaterAny",
-	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-any_logo.png"
+	                        "iconUrl": "http://resource.staging.drivr.com/properties/vehicle-types_four-seater-any_logo.png"
 	                    },
 	                    {
 	                        "ref": "fourSeaterStationCar",
-	                        "iconUrl": "http://resource.master.clickataxi.com/properties/vehicle-types_four-seater-station-car_logo.png"
+	                        "iconUrl": "http://resource.staging.drivr.com/properties/vehicle-types_four-seater-station-car_logo.png"
 	                    }
 	                ],
 	                "mutuallyExclusive": true
@@ -1058,9 +1058,9 @@ Cancels a booking. The method might fail with a `400 Bad Request` response in ca
 
 #### Example request
 
-	curl https://api.clickataxi.com/clients/61241/bookings/923878 \
+	curl https://api.drivr.com/clients/61241/bookings/923878 \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-X DELETE
 
 #### Example response
@@ -1076,16 +1076,16 @@ Rates a current booking. The `clientId`, `bookingId` and `stars` attributes are 
 
 #### Example request
 
-	curl https://api.clickataxi.com/ratings \
+	curl https://api.drivr.com/ratings \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json' \
 		-d '{ "clientId": "1543263", "bookingId": "5436443", "stars": 4, "review": "Funny driver" }'
 
 #### Example response
 
 	HTTP/1.1 201 Created
-	Location: https://api.clickataxi.com/ratings/9dc8bb819c2a4cc4990a9f93be78669e
+	Location: https://api.drivr.com/ratings/9dc8bb819c2a4cc4990a9f93be78669e
 	Content-Type: application/json; charset=utf-8
 
 	{
@@ -1124,9 +1124,9 @@ Searches for addresses or POIs within a given radius. More details can be fetche
 
 #### Example request
 
-	curl https://api.clickataxi.com/places/search?latlng=55.10,12.13&keyword=jagtvej \
+	curl https://api.drivr.com/places/search?latlng=55.10,12.13&keyword=jagtvej \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' 
+		-H 'Accept: application/vnd.drivr.v2+json' 
 
 
 #### Example response
@@ -1193,9 +1193,9 @@ Requests a price quote from `pickup` to `dropoff`.
 
 Requesting a price quote from Amaliegade to Jagtvej on Christmas Eve.
 
-	curl https://api.clickataxi.com/quotes \
+	curl https://api.drivr.com/quotes \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' \
+		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json' \
 		-d '{ "quotingAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "dropoff":{"streetName":"Jagtvej","houseNumber":"111","zipCode":"2200","city":"Copenhagen N","country":"DK","lat":55.696406,"lng":12.550911}, "vehicleType": "taxi" }'
 
@@ -1246,9 +1246,9 @@ Performs a geocoding or reverse geocoding based on parameters.
 
 #### Example request (address)
 
-	curl https://api.clickataxi.com/geocodings?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA \
+	curl https://api.drivr.com/geocodings?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json' 
+		-H 'Accept: application/vnd.drivr.v2+json' 
 
 #### Example response (address)
 
@@ -1269,9 +1269,9 @@ Performs a geocoding or reverse geocoding based on parameters.
 
 #### Example request (latlng)
 
-	curl https://api.clickataxi.com/geocodings?latlng=55.696394,12.55082 \
+	curl https://api.drivr.com/geocodings?latlng=55.696394,12.55082 \
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
-		-H 'Accept: application/vnd.clickataxi.v2+json'
+		-H 'Accept: application/vnd.drivr.v2+json'
 
 #### Example response (latlng)
 
