@@ -822,7 +822,7 @@ A success response means our system has accepted your request for a taxi but not
 
 `comment` An optional comment for driver to see.
 
-`quoteId` An optional reference to a previously requested (trip quote)[#quotes].
+`quoteId` An optional reference to a previously requested [trip quote](#quotes).
 
 
 
