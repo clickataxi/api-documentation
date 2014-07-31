@@ -783,7 +783,7 @@ Updates an existing client. Only clients created by you can be updated.
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"'
 		-H 'Accept: application/vnd.drivr.v2+json'
 		-H 'Content-type: application/json'
-		-d '{ "name": "Jobs", "phone": "+4561715099" }'
+		-d '{ "firstName": "Steve", "phone": "+4561715099" }'
 		-X PUT
 
 #### Example response
@@ -794,7 +794,8 @@ Updates an existing client. Only clients created by you can be updated.
 	{
 	    "createdAt": "2012-09-05T12:11:01.9744265Z",
 	    "id": "61449",
-	    "name": "Jobs",
+	    "firstName": "Steve",
+	    "lastName": "Jobs",
 	    "phone": "+4561715099",
 	    "language": "en",
 	    "email": "john@doe.com",
