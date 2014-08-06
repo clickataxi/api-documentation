@@ -806,9 +806,9 @@ Updates an existing client. Only clients created by you can be updated.
 
 ### <a id="post_clients_bookings" href="#post_clients_bookings">POST /clients/:clientId/bookings</a>
 
-Requests a new taxi booking for an existing [client](#clients). An immediate booking is requested by excluding `arrivalAt` attribute from body. A pre-booking should always have an `arrivalAt` in its body. Notice, some taxi companies require a destination address so a call to [/companies/spot](#spot_companies) should be made before booking in a new area. Check `destinationRequired` attribute on response to find out if a destination address is required in that area.
+Requests a new taxi booking for an existing [client](#clients). An immediate booking is requested by excluding `arrivalAt` attribute from body. A pre-booking should always have an `arrivalAt` in its body and it needs to be in the future. Notice, some taxi companies require a destination address so a call to [/companies/spot](#spot_companies) should be made before booking in a new area. Check `destinationRequired` attribute on response to find out if a destination address is required in that area.
 
-A success response means our system has accepted your request for a taxi but not necessarily that this taxi will be booked. Since we are connecting to real taxi companies around the globe it sometimes will not be possible to fulfill the order. You should check the order status by calling [/clients/:clientId/bookings/:bookingsId](#get_client_booking) regularly.
+A success response means our system has accepted your request for a taxi but not necessarily that this taxi will be booked. Since we are connecting to real taxi companies around the globe it sometimes will not be possible to fulfill the order. You should check the order status by calling [/clients/:clientId/bookings/:bookingsId](#get_client_booking) regularly e.g. every 15 or 30 second.
 
 
 #### Request attributes
@@ -825,6 +825,11 @@ A success response means our system has accepted your request for a taxi but not
 
 `quoteId` An optional reference to a previously requested [trip quote](#quotes).
 
+`corporationId` An optional reference to a corporation in case this client is associated with an existing corporation.
+
+`payee` An optional string indicating if referenced corporation should pay for this booking of if client should pay. Value must be either `client` or `corporation`.
+
+`voucherId` An optional reference to a voucher.
 
 
 #### Example request
