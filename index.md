@@ -86,6 +86,40 @@ Requests an authorization token by posting via basic authentication. Upon succes
 	}
 
 
+### <a id="sessions" href="#sessions">POST /sessions</a>
+
+Authenticates a client or corporation. Using an invalid `email` and `password` combination will result in `401 Unauthorized` response.
+
+#### Example request
+
+	curl https://api.drivr.com/sessions \
+		-H 'Accept: application/vnd.drivr.v2+json' \
+		-H 'Content-type: application/json' \
+		-d '{ "email": "steve@apple.com", "password": "applesnotoranges" }'
+
+#### Example response
+
+	HTTP/1.0 201 Created
+	Content-Type: application/json; charset=utf-8
+	Location: http://api.drivr.com/sessions/2f43ca299bb6648678b2e5b41aa2aaa2
+
+	{
+	  "corporation": {
+	    "id": "1580030158",
+	    "createdAt": "2076-04-01T10:52:08Z",
+	    "name": "Apple",
+	    "card": {
+	      ...
+	    },
+	    "homeAddress": {
+	      ...
+	    },
+	    "vatNumber": "..."
+	  },
+	  "token": "2f43ca299bb6648678b2e5b41aa2aaa2"
+	}
+
+
 ### <a id="nearby_places" href="#nearby_places">GET /places/nearby</a>
 
 Returns list of nearby Point Of Interests (POIs). This could include airports, metro- or bus stations, restaurants and others. One POI doesn't necessarily have a category or it might have more than one category.
