@@ -363,7 +363,7 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 	</tr>
 </table>
 
-`properties.name[services]` Additional services offered by company.
+`properties.name[services]` Additional services offered by company. Examples of services are
 
 <table>
 	<tr>
@@ -387,6 +387,8 @@ Returns a list of taxi companies operating in specified area. List is ordered by
 		<td>Wheelchairs may be brought onboard</td>
 	</tr>
 </table>
+
+These services are dynamic and could change based on taxi company and location. You should not hardcode any of these services in your own integration but query the available list every time you want to use them.
 
 
 #### Example request
