@@ -703,14 +703,6 @@ All parameters are optional unless specified otherwise.
 	                "completed": false
 	            },
 	            {
-	                "createdAt": "2012-08-28T13:24:06.9895402Z",
-	                "type": "cancel_disabled",
-	                "header": "Booking is received",
-	                "body": "Your taxi will pick you up at the selected time",
-	                "cancelable": false,
-	                "completed": false
-	            },
-	            {
 	                "createdAt": "2012-08-28T13:24:00.0468327Z",
 	                "type": "executed",
 	                "header": "Booking is received",
