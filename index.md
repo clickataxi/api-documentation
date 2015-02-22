@@ -283,6 +283,10 @@ Returns details about a specific company. Use this operation to a high-level det
 
 `minimumPreBooking` & `maximumPreBooking` Define an interval for pre-booking, value in seconds (both can be empty)
 
+`pickupTypes` List of possible types of pickup being either `asap`, `later` or a combination. When it's only `asap` it is not possible to pre-book on this company (possible associated with a returned vehicle type) and if it's only `later` it is not possible to do an immediate booking.
+
+`paymentTypes` List of possible types of payment. Values are `card` (credit card payment possible), `corporation` (corporation account payment possible) or `cash` (in vehicle cash payment possible).
+
 
 #### Example request
 
