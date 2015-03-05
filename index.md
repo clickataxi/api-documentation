@@ -8,7 +8,7 @@ The Drivr API provides the ability to create and retrieve required information i
 
 Every URL is in the format https://api.drivr.com/:resource[/:action[?:params]] such as https://api.drivr.com/places/nearby to get a list of nearby places.
 
-Every request must include a `User-Agent` header with your application name and an url or email address. We need this for tracking purposes and we might contact you in case this information isn't probably filled out. An example of a good header would be `FooBooking-Version5 (http://foo-bookings.com/)`. Requests without this header might get a `400 Bad Request` in future versions of the API.
+Every request must include a `User-Agent` header with your application name and a URL or email address. We need this for tracking purposes and we might contact you in case this information isn't properly filled out. An example of a good header would be `FooBooking-Version5 (http://foo-bookings.com/)`. Requests without this header might get a `400 Bad Request` in future versions of the API.
 
 The `Accept` header specifies which format to return. Only `application/json` is supported.
 
@@ -18,7 +18,7 @@ Clients must include an `Accept` header with a custom Drivr mime type to specify
 
 	application/vnd.drivr[.version]+[type]
 
-If this header isn't specified the latest API version is used but it's highly recommended to specific a specific version since future revisions might not be fully backward compatible.
+If this header isn't specified the latest API version is used but it's highly recommended to specify a version since future revisions might not be fully backward compatible.
 
 Currently supported is `v1`, `v2` and `latest` for `version` and `json` for `type`. 
 
@@ -35,13 +35,13 @@ Example requests are constructed using [cURL](http://en.wikipedia.org/wiki/CURL)
 
 ## Suggested booking flow
 
-As as minimum requirement to book a taxi, one must first [acquire an access token](#authorizations) with provided credentials to get an access token. This access token must be used for all future requests.
+As a minimum requirement to book a taxi, one must first [acquire an access token](#authorizations) with provided credentials to get an access token. This access token must be used for all future requests.
 
 Second step is to [create a client](#clients) and finally [create a booking](#post_clients_bookings).
 
-Usually one would also like to display which companies [operate in a given area](#spot_companies) and check if that company requires a dropoff address and allows automated bookings. To check if company supports automated bookings the `automatedBooking` attribute on a company should be checked. If this is `false` our API cannot automatically book a taxi on i.e. trying to place a booking will fail but you may use returned phone number to display this as a fallback in your application flow. Most companies on our platform allows automatic booking, though.
+Usually one would also like to display which companies [operate in a given area](#spot_companies) and check if that company requires a dropoff address and allows automated bookings. To check if a company supports automated bookings, the `automatedBooking` attribute on a company should be checked. If this is `false`, our API cannot automatically book a taxi with this company. Trying to place a booking will fail, but you can use the returned phone number as a fallback in your application flow. Most companies on our platform allow automatic booking, though.
 
-Checking if a company requires a dropoff address is done by looking at `destinationRequired` boolean attribute. When `true` both a `pickup` and `dropoff` structure must be sent in booking request.
+Checking if a company requires a dropoff address is done by looking at `destinationRequired` boolean attribute. When `true`, both a `pickup` and `dropoff` structure must be sent in a booking request.
 
 
 ## Authentication
