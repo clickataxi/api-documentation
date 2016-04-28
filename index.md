@@ -1063,12 +1063,12 @@ Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` struc
             "streetName": "Amaliegade",
             "houseNumber": "36",
 	    },
-			"passenger": {
-			    "name": "John Doe",
-			    "phone": "+4511223344"
-			},
+	    "passenger": {
+	        "name": "John Doe",
+	        "phone": "+4511223344"
+	    },
 	    "services": [
-	    	"childSeat"
+	        "childSeat"
 	    ]
 	    "createdAt": "2012-04-09T20:17:16.1958490Z"
 	}
