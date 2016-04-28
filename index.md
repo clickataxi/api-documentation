@@ -262,6 +262,115 @@ All parameters are optional unless specified otherwise.
 	}
 
 
+### <a id="coverages" href="#coverages">GET /coverages</a>
+
+Returns a list of coverage for a given area grouped by vehicle type.
+
+#### Request parameters (querystring)
+
+`latlng` _required*_ Latitude and longitude separated with comma where coverages is requested (example `55.10,12.13`)
+
+`language` ISO 639-1 language code for getting localized names for returned description (example `da` for Danish). Defaults to `en` (for English).
+
+### Response attributes
+
+`vehicleType` Vehicle type structure with details about vehicle supported for this coverage area.
+
+`company` Company structure with details about company operating in this coverage area.
+
+`bookingFeatures` List of features supported for this vehicle type in this coverage area.
+
+#### Example request
+
+	curl -X "GET" "https://api.drivr.com/coverages?latlng=55.697035%2C12.550611" \
+		-H "Accept: application/vnd.clickataxi.v2+json" \
+		-H "Authorization: Token token=\"11113a3bb8d4a40f08065e640621fee63\"" \
+		-H "Content-Type: application/json"
+
+#### Example response
+
+	[
+	  {
+	    "vehicleType": {
+	      "id": "taxi",
+	      "name": "Taxi",
+	      "description": "Licensed taxi",
+	      "extendedDescription": "Metered and regulated taxi service. Rates depend on day/time according to the taxi regulation.",
+	      "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+	      "seats": 4,
+	      "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logoalternate_ico_vehicle_taxi_top@2x.png",
+	      "paymentTypes": [
+	        "cash"
+	      ],
+	      "ref": "/vehicleTypes/taxi"
+	    },
+	    "company": {
+	      "id": "1580029131",
+	      "franchiseId": "d1f49ba1827a4a6f8d59fc3cfe7607b2",
+	      "name": "DRIVR Copenhagen",
+	      "logoUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/companies/drivr-copenhagen_logo_drivr-logo[1].png",
+	      "preBookingDestinationRequired": true,
+	      "automatedBooking": true,
+	      "driverComment": true,
+	      "phone": "+4589885942",
+	      "country": {
+	        "id": "1580030083",
+	        "unitSystem": "metric",
+	        "code": "DK",
+	        "currency": "DKK",
+	        "currencySymbol": "Kr.",
+	        "name": "Denmark",
+	        "phonePrefix": "+45"
+	      },
+	      "city": "København",
+	      "zipCode": "1050",
+	      "utcOffset": 7200,
+	      "minimumPreBooking": 3900,
+	      "pickupTypes": [
+	        "asap",
+	        "later"
+	      ],
+	      "paymentTypes": [
+	        "voucher",
+	        "card",
+	        "corporation",
+	        "cash"
+	      ],
+	      "uid": "806f86181b0f413594c10bf434ebae8b",
+	      "ref": "/companies/1580029131"
+	    },
+	    "bookingFeatures": [
+	      {
+	        "name": "Eco-friendly",
+	        "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_eco@2x.png",
+	        "type": "ECO",
+	        "fee": 0.0,
+	        "currency": "DKK",
+	        "currencySymbol": "Kr.",
+	        "shortName": "ec"
+	      },
+	      {
+	        "name": "Pet",
+	        "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_animal@2x.png",
+	        "type": "DOMESTIC_ANIMAL",
+	        "fee": 20.0,
+	        "currency": "DKK",
+	        "currencySymbol": "Kr.",
+	        "shortName": "an"
+	      },
+	      {
+	        "name": "Bike",
+	        "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/properties/services_bike_logo.png",
+	        "type": "BIKE",
+	        "fee": 0.0,
+	        "currency": "DKK",
+	        "currencySymbol": "Kr.",
+	        "shortName": "bk"
+	      }
+	    ]
+	  }
+	]
+
 
 ### <a id="get_company" href="#get_company">GET /companies/:companyId</a>
 
