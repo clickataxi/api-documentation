@@ -63,6 +63,57 @@ Tokens can be initially acquired programmatically using basic authentication thr
 You may send a `?callback` parameter to any GET operations to have results wrapped in a JSON callback function. This is typically used when browsers want to embed content in web pages by getting around cross domain issues. The response includes the same data output as the regular API, plus the relevant HTTP Header information.
 
 
+## Batching multiple operations into single request
+
+Our API supports batching multiple API operations into a single HTTP request. This might come in handy to simply client flow if multiple sets of data is required on your end. Below is an example of calling two `quotes` operations with different vehicle types.
+
+All operations can be batched by sending a formatted payload to the `batch` endpoint.
+
+
+#### Example request
+
+This example batches two requests for `quotes` into one HTTP request. The `method` (required) specify which method to perform on our API, the `relativeUrl` (required) is request to perform on API (including query string parameters) and `body` (optional) is any payload required for endpoint.
+
+	curl -H 'Accept: application/vnd.drivr.v2+json' \
+	    -H 'Authorization: Token token="<your-token>"' \
+	    -H 'Content-type: application/json' \
+	    'https://api.drivr.com/batch' \
+	    -d '[{"method":"POST","relativeUrl":"quotes","body":"{ \"pickup\": { \"lat\": 55.697047, \"lng\": 12.550911 }, \"dropoff\": { \"lat\": 55.685871, \"lng\": 12.59477 }, \"vehicleType\": \"taxi\" }"},{"method":"POST","relativeUrl":"quotes","body":"{ \"pickup\": { \"lat\": 55.697035, \"lng\": 12.550611 }, \"dropoff\": { \"lat\": 55.685871, \"lng\": 12.59477 }, \"vehicleType\": \"drivr\" }"}]'
+
+#### Example response
+
+	[
+	  {
+	    "code": 201,
+	    "headers": [
+	      {
+	        "name": "Location",
+	        "value": "https://api.drivr.com/quotes/1579823592"
+	      },
+	      {
+	        "name": "Content-Type",
+	        "value": "application/json; charset=utf-8"
+	      }
+	    ],
+	    "body": "{\r\n  \"id\": \"1579823592\",\r\n  \"pickup\": {\r\n    \"lat\": 55.697047,\r\n    \"lng\": 12.550911\r\n  },\r\n  \"dropoff\": {\r\n    \"lat\": 55.685871,\r\n    \"lng\": 12.59477\r\n  },\r\n  \"vehicleType\": \"taxi\",\r\n  \"price\": {\r\n    \"value\": 150.3,\r\n    \"currency\": \"DKK\",\r\n    \"currencySymbol\": \"Kr.\",\r\n    \"type\": \"variable\",\r\n    \"distance\": 4171,\r\n    \"duration\": 809,\r\n    \"fees\": []\r\n  },\r\n  \"polyline\": \"}h}rImirkAt@kCUWmDaEmCiDeBmBQU[u@lAkCz@gCdByFfAcEhA}EXc@z@sD`@}Ar@oCRo@hAaCx@yBvBkE|CgG\\\\g@|@iBV}@rDkInDmIlE}JdKkX`CeG|@wBhAcDDWDOMWc@iAIEuAuDgAoCkCwGi@cBu@yDCe@a@{BAoCGk@QcAOSa@cBy@}BuB{DC]i@y@~@}@VKLeAhAwA~DmFfDgExB{ClA{ANUUgE{@iP|HrGrB~A\",\r\n  \"ref\": \"/quotes\"\r\n}"
+	  },
+	  {
+	    "code": 201,
+	    "headers": [
+	      {
+	        "name": "Location",
+	        "value": "https://api.drivr.com/quotes/1579823595"
+	      },
+	      {
+	        "name": "Content-Type",
+	        "value": "application/json; charset=utf-8"
+	      }
+	    ],
+	    "body": "{\r\n  \"id\": \"1579823595\",\r\n  \"pickup\": {\r\n    \"lat\": 55.697035,\r\n    \"lng\": 12.550611\r\n  },\r\n  \"dropoff\": {\r\n    \"lat\": 55.685871,\r\n    \"lng\": 12.59477\r\n  },\r\n  \"vehicleType\": \"drivr\",\r\n  \"price\": {\r\n    \"value\": 163.63,\r\n    \"currency\": \"DKK\",\r\n    \"currencySymbol\": \"Kr.\",\r\n    \"type\": \"variable\",\r\n    \"distance\": 4186,\r\n    \"duration\": 811,\r\n    \"fees\": []\r\n  },\r\n  \"polyline\": \"ki}rIghrkAbAqDUWmDaEmCiDeBmBQU[u@lAkCz@gCdByFfAcEhA}EXc@z@sD`@}Ar@oCRo@hAaCx@yBvBkE|CgG\\\\g@|@iBV}@rDkInDmIlE}JdKkX`CeG|@wBhAcDDWDOMWc@iAIEuAuDgAoCkCwGi@cBu@yDCe@a@{BAoCGk@QcAOSa@cBy@}BuB{DC]i@y@~@}@VKLeAhAwA~DmFfDgExB{ClA{ANUUgE{@iP|HrGrB~A\",\r\n  \"ref\": \"/quotes\"\r\n}"
+	  }
+	]
+
+
 ## Operations
 
 ### <a id="authorizations" href="#authorizations">POST /authorizations</a>
@@ -2201,6 +2252,7 @@ Requesting nearby vehicles near Jagtvej 111
 	    ]
 	  }
 	]
+
 
 <!--
 ### GET /geocodings
