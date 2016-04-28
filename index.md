@@ -1021,6 +1021,8 @@ A success response means our system has accepted your request for a taxi but not
 
 `payee` An optional string indicating if referenced corporation should pay for this booking of if client should pay. Value must be either `client` or `corporation`.
 
+`passenger` An optional structure for passing in `name` and `phone` number of passenger (if not same as client performing booking).
+
 `voucherId` An optional reference to a voucher.
 
 
@@ -1032,7 +1034,8 @@ Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` struc
 		-H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
 		-H 'Accept: application/vnd.drivr.v2+json' \
 		-H 'Content-type: application/json' \
-		-d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "vehicleType": "fourSeaterAny", "services": "childSeat" }'
+		-d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "passenger": { "name": "John Doe", "phone": "+4511223344" }, "vehicleType": "fourSeaterAny", "services": "childSeat" }'
+
 
 #### Example response
 
@@ -1060,6 +1063,10 @@ Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` struc
             "streetName": "Amaliegade",
             "houseNumber": "36",
 	    },
+			"passenger": {
+			    "name": "John Doe",
+			    "phone": "+4511223344"
+			},
 	    "services": [
 	    	"childSeat"
 	    ]
