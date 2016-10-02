@@ -3,78 +3,63 @@ HOST: http://polls.apiblueprint.org/
 
 # Drivr
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+The Drivr API provides the ability to create and retrieve required information in order to book taxis globally.
 
-## Questions Collection [/questions]
+Every URL is in the format https://api.drivr.com/:resource[/:action[?:params]] such as https://api.drivr.com/places/nearby to get a list of nearby places.
 
-### List All Questions [GET]
+Every request must include a User-Agent header with your application name and a URL or email address. We need this for tracking purposes and we might contact you in case this information isn't properly filled out. An example of a good header would be FooBooking-Version5 (http://foo-bookings.com/). Requests without this header might get a 400 Bad Request in future versions of the API.
 
-+ Response 200 (application/json)
+The Accept header specifies which format to return. Only application/json is supported.
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+Returned format may be overridden by appending a format parameter to a request e.g. https://api.drivr.com/companies?format=json.
 
-### Create a New Question [POST]
+Clients must include an Accept header with a custom Drivr mime type to specify which version of the API to use e.g.
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+    application/vnd.drivr[.version]+[type]
+    
+If this header isn't specified the latest API version is used but it's highly recommended to specify a version since future revisions might not be fully backward compatible.
+
+Currently supported is v1, v2 and latest for version and json for type.
+
+Responses will be compressed if request includes an Accept-Encoding header with a gzip value.
+
+All timestamps are represented as ISO 8601 format YYYY-MM-DDTHH:MM:SSZ.
+
+All IDs are represented as strings and should be stored and treated as strings. The format might change across API versions without notice.
+
+
+## Authorizations [/authorizations]
+
+### Authorize [POST]
+
+Requests an authorization token by posting via basic authentication. Upon successful authentication a 256-bit token will be returned which should be used for future requests. These access tokens doesn't by default expire but it might become invalid over time. Using an invalid token in requests will result in 401 Unauthorized responses and you should in that case re-issue a request for a new token.
 
 + Request (application/json)
+    
+    + Headers
+        
+            Accept: application/vnd.drivr.v2+json
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+    + Body
+    
+            {
+                "question": "Favourite programming language?",
+                "choices": [
+                    "Swift",
+                    "Python",
+                    "Objective-C",
+                    "Ruby"
+                ]
+            }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /authorizations/1111a3bb8d4a40f08100e640621fee10
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "token": "1111a3bb8d4a40f08100e640621fee10"
             }
