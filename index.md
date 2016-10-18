@@ -1259,6 +1259,9 @@ Returns full details about an existing booking created by client.
 
 #### Example response (full response)
 
+    HTTP/1.0 200 OK
+    Content-Type: application/json; charset=utf-8
+    
     {
       "id": "41710bc54356450385c16321a0b19e22",
       "reference": "DZZNCB6",
@@ -1603,12 +1606,21 @@ Returns full details about an existing booking created by client.
       },
       "statuses": [
         {
+          "id": "1579278368",
+          "createdAt": "2016-10-18T13:14:34+00:00",
+          "type": "completed",
+          "header": "Trip finished",
+          "body": "Thank you for your business",
+          "cancelable": false,
+          "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_completed@2x.png"
+        },
+        {
           "id": "1579278369",
           "createdAt": "2016-10-18T13:10:29+00:00",
           "type": "passengerOnBoard",
           "header": "Trip in progress",
           "body": "Enjoy the ride",
-          "cancelable": true,
+          "cancelable": false,
           "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_passengerOnBoard@2x.png"
         },
         {
@@ -1617,7 +1629,7 @@ Returns full details about an existing booking created by client.
           "type": "arrived",
           "header": "Arriving",
           "body": "Your car is arriving",
-          "cancelable": true,
+          "cancelable": false,
           "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_arrived@2x.png"
         },
         {
@@ -1626,7 +1638,7 @@ Returns full details about an existing booking created by client.
           "type": "dispatched",
           "header": "En route",
           "body": "Your car is on the way",
-          "cancelable": true,
+          "cancelable": false,
           "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_dispatched@2x.png"
         },
         {
@@ -1635,12 +1647,13 @@ Returns full details about an existing booking created by client.
           "type": "registered",
           "header": "Requesting car",
           "body": "Estimated arrival within 15 minutes",
-          "cancelable": true,
+          "cancelable": false,
           "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_registered@2x.png"
         }
       ],
-      "cancelable": true,
-      "state": "active",
+      "completed": true,
+      "state": "successful",
+      "drivingState": "pending",
       "driver": {
         "id": "1580060992",
         "uid": "ef7b422ea93a48fca863872b4e6fffd7",
@@ -1696,7 +1709,7 @@ Returns full details about an existing booking created by client.
           ],
           "position": {
             "id": "1580030756",
-            "createdAt": "2016-10-18T13:11:16+00:00",
+            "createdAt": "2016-10-18T13:14:36+00:00",
             "lat": 55.685702366806282,
             "lng": 12.58787973785082,
             "accuracy": 10.0
@@ -1806,7 +1819,7 @@ Returns full details about an existing booking created by client.
         ],
         "position": {
           "id": "1580030756",
-          "createdAt": "2016-10-18T13:11:16+00:00",
+          "createdAt": "2016-10-18T13:14:36+00:00",
           "lat": 55.685702366806282,
           "lng": 12.58787973785082,
           "accuracy": 10.0
@@ -1842,6 +1855,7 @@ Returns full details about an existing booking created by client.
           "finalFare": 25.0,
           "invoiceNumber": "KØBE-1581170768",
           "invoiceName": "JP Franchise Partner",
+          "paidAt": "2016-10-18T13:14:34+00:00",
           "finalFareTax": 0.0,
           "tips": 5.0,
           "baseFare": 20.0,
@@ -1852,6 +1866,7 @@ Returns full details about an existing booking created by client.
         "invoiceNumber": "KØBE-1581170768",
         "invoiceName": "JP Franchise Partner",
         "createdAt": "2016-10-18T13:10:43+00:00",
+        "paidAt": "2016-10-18T13:14:34+00:00",
         "ref": "/bookingpayments/1580052440"
       },
       "distance": 0.0,
@@ -1860,10 +1875,8 @@ Returns full details about an existing booking created by client.
       "estimate": {
         "currency": "DKK",
         "currencySymbol": "kr",
-        "arrivalTime": 1560,
         "distance": 0.0,
-        "duration": 60,
-        "polyline": "sd{rI}rykAj@eDlB|AjM~JbD|CnBtA\\RQj@e@jCq@pDiBnKq@lDa@nBs@zDmCxOwBrMsB~LgC~Nw@lFsB|LG\\DB|AbBvAvAj@\\fHzGvBnBxGfGL`@p@p@@RPVTXTf@FP?XkBjH_AhCYd@q@vA{BvDaArAo@l@_@VeA`Aq@tA_@fAe@lBWbBIjAMtFG`HO|GUbEGdCUrAa@rAcCfFMVk@zA{@`E_@rBe@hBgApCy@dBs@|@i@h@kBlBs@z@uBvD_BxCoA|Be@dAuAdCQTi@`@k@Xo@Pu@NqAFoCAgAPo@R_@Ru@f@_@\\]`@k@v@_AfBw@`CWjA[pBMrAMhBE~@{@rVUfCe@vBg@zAw@nBuC~DgGdI}E|GoDdEy@z@qBlBg@ZgA`AS@_DdBaGdDmEdCUL[VcAdAcAjBBpA^xGRlDLj@RnC|ApTd@lGnEw@LADGhB~AVVXs@Vt@BD"
+        "duration": 60
       },
       "payee": "person",
       "paymentType": "cash",
