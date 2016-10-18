@@ -1219,8 +1219,8 @@ Returns full details about an existing booking created by client.
             "phone": "+4535309184"
         },
         "pickup": {
-              "streetName": "Amaliegade",
-              "houseNumber": "36",
+            "streetName": "Amaliegade",
+            "houseNumber": "36",
             "city": "Copenhagen K",
             "country": "DK",
             "distance": 0,
@@ -1229,32 +1229,650 @@ Returns full details about an existing booking created by client.
             "zipCode": "1256"
         },
         "vehicleType": "fourSeaterAny",
-          "statuses": [
-              {
-                  "createdAt": "2012-03-19T13:24:00.0468327Z",
-                  "type": "executed",
-                  "header": "Booking is received",
-                  "body": "Your taxi will pick you up at the selected time",
-                  "cancelable": true
-              },
-              {
-                  "createdAt": "2012-03-19T13:23:56.3048576Z",
-                  "type": "processing",
-                  "header": "Processing",
-                  "body": "We are processing the booking request.",
-                  "cancelable": true
-              },
-              {
-                  "createdAt": "2012-03-19T13:23:44.7758936Z",
-                  "type": "registered",
-                  "header": "Booking is received",
-                  "body": "Your taxi will pick you up at the selected time",
-                  "cancelable": true
-              }
-          ],
+        "statuses": [
+            {
+                "createdAt": "2012-03-19T13:24:00.0468327Z",
+                "type": "executed",
+                "header": "Booking is received",
+                "body": "Your taxi will pick you up at the selected time",
+                "cancelable": true
+            },
+            {
+                "createdAt": "2012-03-19T13:23:56.3048576Z",
+                "type": "processing",
+                "header": "Processing",
+                "body": "We are processing the booking request.",
+                "cancelable": true
+            },
+            {
+                "createdAt": "2012-03-19T13:23:44.7758936Z",
+                "type": "registered",
+                "header": "Booking is received",
+                "body": "Your taxi will pick you up at the selected time",
+                "cancelable": true
+            }
+        ],
         "createdAt": "2012-03-19T06:30:01.0000000Z",
         "arrivalAt": "2012-03-20T08:00:00.0000000Z",
         "state": "active"
+    }
+
+#### Example response (full response)
+
+    {
+      "id": "41710bc54356450385c16321a0b19e22",
+      "reference": "DZZNCB6",
+      "clientId": "5a061a5215fa4eb0b0103106d55ae30f",
+      "client": {
+        "createdAt": "2016-10-18T12:56:21+00:00",
+        "id": "5a061a5215fa4eb0b0103106d55ae30f",
+        "name": "Zachary Freeman",
+        "phone": "+459646683207",
+        "phonePrefix": "+45",
+        "phoneDigits": "9646683207",
+        "language": "en",
+        "guid": "5a061a52-15fa-4eb0-b010-3106d55ae30f",
+        "email": "oto@example.com",
+        "verified": true,
+        "cards": [],
+        "firstName": "Zachary",
+        "lastName": "Freeman",
+        "emailVerified": true,
+        "country": "DK",
+        "username": "oto@example.com",
+        "affiliateCode": "CRPCK4",
+        "affiliateValue": "kr5",
+        "ref": "/clients/5a061a5215fa4eb0b0103106d55ae30f",
+        "rating": 5.0
+      },
+      "passenger": {
+        "name": "Zachary Freeman",
+        "phone": "+459646683207"
+      },
+      "createdAt": "2016-10-18T13:06:57+00:00",
+      "arrivalAt": "2016-10-18T13:06:57+00:00",
+      "localArrivalAt": "2016-10-18T15:06:57+02:00",
+      "properties": [],
+      "vehicleType": "taxi",
+      "requestedVehicleType": {
+        "id": "taxi",
+        "name": "Taxi",
+        "description": "Licensed taxi",
+        "extendedDescription": "Metered and regulated taxi service. Rates depend on day/time according to the taxi regulation.",
+        "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+        "vehicles": [],
+        "seats": 4,
+        "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logoalternate_ico_vehicle_taxi_top@2x.png",
+        "paymentTypes": [
+          "cash"
+        ],
+        "ref": "/vehicleTypes/taxi"
+      },
+      "services": [],
+      "features": [],
+      "company": {
+        "id": "1580029131",
+        "name": "DRIVR Copenhagen",
+        "logoUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/companies/drivr-copenhagen_logo_drivr-logo[1].png",
+        "automatedBooking": true,
+        "properties": [
+          {
+            "name": "services",
+            "values": [
+              {
+                "ref": "eco",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_eco@2x.png",
+                "name": "Eco-friendly"
+              },
+              {
+                "ref": "childSeat",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_childSeat@2x.png",
+                "name": "Child seat"
+              },
+              {
+                "ref": "bike",
+                "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/properties/services_bike_logo.png",
+                "name": "Bike"
+              },
+              {
+                "ref": "domesticAnimal",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_animal@2x.png",
+                "name": "Pet"
+              },
+              {
+                "ref": "wheelchair",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_wheelchair@2x.png",
+                "name": "Wheelchair accessible vehicle"
+              },
+              {
+                "ref": "extraLuggage",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_luggage@2x.png",
+                "name": "Extra Luggage"
+              },
+              {
+                "ref": "transportationPatient",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_patient@2x.png",
+                "name": "Patient transportation"
+              },
+              {
+                "ref": "transportationFood",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_food@2x.png",
+                "name": "Food transportation"
+              },
+              {
+                "ref": "meetAndGreet",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_meetGreet@2x.png",
+                "name": "Meet and greet"
+              },
+              {
+                "ref": "carPool",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/bookingFeatureType/logo_40506-200[1].png",
+                "name": "Oops...Text missing"
+              }
+            ],
+            "mutuallyExclusive": false
+          },
+          {
+            "name": "vehicleTypes",
+            "values": [
+              {
+                "ref": "drivrEvent",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_drivr-event_logo_vehicle-types_drivr-event_logo_ico_vehicle_adam1_side@2x[1].png",
+                "name": "Drivr Event"
+              },
+              {
+                "ref": "taxi",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+                "name": "Taxi"
+              },
+              {
+                "ref": "drivr",
+                "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivr_side@2x.png",
+                "name": "Drivr"
+              },
+              {
+                "ref": "drivrExecutive",
+                "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_side@2x.png",
+                "name": "Drivr Executive"
+              },
+              {
+                "ref": "grande",
+                "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_side@2x.png",
+                "name": "Drivr XL"
+              },
+              {
+                "ref": "TAXI_5",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi5_logo_902.png",
+                "name": "Taxi 5 seater"
+              },
+              {
+                "ref": "TAXI_6",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_vehicle-types_taxi6_logo_vehicle-types_taxi6_logo_ico_vehicle_taxixl_side@2x.png",
+                "name": "Taxi 6 seater"
+              },
+              {
+                "ref": "TAXI_7",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_grumpy001.PNG",
+                "name": "Taxi 7 seater"
+              },
+              {
+                "ref": "TAXI_8",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi8_logo_vehicle-types_taxi8_logo_ico_vehicle_taxixxl_side@2x.png",
+                "name": "Taxi 8 seater"
+              },
+              {
+                "ref": "TAXI_STATION_CAR",
+                "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_solar-taxi-by-hakan-gursu2[1].jpg",
+                "name": "Taxi Station Car"
+              }
+            ],
+            "mutuallyExclusive": true
+          }
+        ],
+        "phone": "+4589885942",
+        "vehicleTypes": [
+          {
+            "id": "drivrEvent",
+            "name": "Drivr Event",
+            "description": "Free Adam summer rides",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_drivr-event_logo_vehicle-types_drivr-event_logo_ico_vehicle_adam1_side@2x[1].png",
+            "vehicles": [],
+            "seats": 3,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_drivr-event_logoalternate_vehicle-types_drivr-event_logoalternate_ico_vehicle_adam1_top@2x[1].png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/drivrEvent"
+          },
+          {
+            "id": "taxi",
+            "name": "Taxi",
+            "description": "Officiel Taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+            "vehicles": [],
+            "seats": 4,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logoalternate_ico_vehicle_taxi_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/taxi"
+          },
+          {
+            "id": "drivr",
+            "name": "Drivr",
+            "description": "Drivr",
+            "extendedDescription": "Mercedes E-class eller lign",
+            "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivr_side@2x.png",
+            "vehicles": [],
+            "seats": 4,
+            "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivr_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/drivr"
+          },
+          {
+            "id": "drivrExecutive",
+            "name": "Drivr Executive",
+            "description": "Mercedes S Class eller lignende",
+            "extendedDescription": "Mercedes S-class eller lign",
+            "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_side@2x.png",
+            "vehicles": [],
+            "seats": 3,
+            "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_drivrexecutive_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/drivrExecutive"
+          },
+          {
+            "id": "grande",
+            "name": "Drivr XL",
+            "description": "Drivr XL",
+            "extendedDescription": "6 Persons SUV eller VAN",
+            "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_side@2x.png",
+            "vehicles": [],
+            "seats": 6,
+            "mapIconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/vehicleTypes/ico_vehicle_grande_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/grande"
+          },
+          {
+            "id": "TAXI_5",
+            "name": "Taxi 5 seater",
+            "description": "Licensed taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi5_logo_902.png",
+            "vehicles": [],
+            "seats": 5,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi5_logoalternate_a_cat.jpg",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/TAXI_5"
+          },
+          {
+            "id": "TAXI_6",
+            "name": "Taxi 6 seater",
+            "description": "Licensed taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_vehicle-types_taxi6_logo_vehicle-types_taxi6_logo_ico_vehicle_taxixl_side@2x.png",
+            "vehicles": [],
+            "seats": 6,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi6_logoalternate_vehicle-types_taxi6_logoalternate_ico_vehicle_taxixl_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/TAXI_6"
+          },
+          {
+            "id": "TAXI_7",
+            "name": "Taxi 7 seater",
+            "description": "Licensed taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_grumpy001.PNG",
+            "vehicles": [],
+            "seats": 7,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo-alternate_grumpy001.PNG",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/TAXI_7"
+          },
+          {
+            "id": "TAXI_8",
+            "name": "Taxi 8 seater",
+            "description": "Licensed taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi8_logo_vehicle-types_taxi8_logo_ico_vehicle_taxixxl_side@2x.png",
+            "vehicles": [],
+            "seats": 8,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi8_logoalternate_vehicle-types_taxi8_logoalternate_ico_vehicle_taxixxl_top@2x.png",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/TAXI_8"
+          },
+          {
+            "id": "TAXI_STATION_CAR",
+            "name": "Taxi Station Car",
+            "description": "Licensed taxi",
+            "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo_solar-taxi-by-hakan-gursu2[1].jpg",
+            "vehicles": [],
+            "seats": 4,
+            "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicleType/logo-alternate_solar-taxi-by-hakan-gursu2[1].jpg",
+            "paymentTypes": [
+              "cash"
+            ],
+            "ref": "/vehicleTypes/TAXI_STATION_CAR"
+          }
+        ],
+        "country": {
+          "id": "1580030083",
+          "unitSystem": "metric",
+          "code": "DK",
+          "currency": "DKK",
+          "currencySymbol": "kr",
+          "name": "Denmark",
+          "phonePrefix": "+45"
+        },
+        "city": "København",
+        "zipCode": "1050",
+        "utcOffset": 7200,
+        "uid": "806f86181b0f413594c10bf434ebae8b",
+        "ref": "/companies/1580029131"
+      },
+      "pickup": {
+        "id": "1580255648",
+        "lat": 55.703272,
+        "lng": 12.507791,
+        "formattedAddress": "55.703272, 12.507791",
+        "singleLineFormattedAddress": "55.703272, 12.507791",
+        "olsonTimeZone": "Europe/Copenhagen"
+      },
+      "dropoff": {
+        "id": "1580255650",
+        "streetName": "Store Kongensgade",
+        "houseNumber": "81B",
+        "zipCode": "1264",
+        "city": "København",
+        "country": "DK",
+        "lat": 55.685664,
+        "lng": 12.587998,
+        "formattedAddress": "Store Kongensgade 81B \n1264 København Denmark",
+        "singleLineFormattedAddress": "Store Kongensgade 81B , 1264 København Denmark",
+        "addressString": "Store Kongensgade 81B, 1264 København K, Danmark"
+      },
+      "statuses": [
+        {
+          "id": "1579278369",
+          "createdAt": "2016-10-18T13:10:29+00:00",
+          "type": "passengerOnBoard",
+          "header": "Trip in progress",
+          "body": "Enjoy the ride",
+          "cancelable": true,
+          "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_passengerOnBoard@2x.png"
+        },
+        {
+          "id": "1579278374",
+          "createdAt": "2016-10-18T13:10:22+00:00",
+          "type": "arrived",
+          "header": "Arriving",
+          "body": "Your car is arriving",
+          "cancelable": true,
+          "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_arrived@2x.png"
+        },
+        {
+          "id": "1579278375",
+          "createdAt": "2016-10-18T13:10:21+00:00",
+          "type": "dispatched",
+          "header": "En route",
+          "body": "Your car is on the way",
+          "cancelable": true,
+          "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_dispatched@2x.png"
+        },
+        {
+          "id": "1579278376",
+          "createdAt": "2016-10-18T13:06:57+00:00",
+          "type": "registered",
+          "header": "Requesting car",
+          "body": "Estimated arrival within 15 minutes",
+          "cancelable": true,
+          "iconUrl": "https://resource-master-clickataxi-com.s3.amazonaws.com/api/v2/bookingStatuses/ico_booking_statuses_registered@2x.png"
+        }
+      ],
+      "cancelable": true,
+      "state": "active",
+      "driver": {
+        "id": "1580060992",
+        "uid": "ef7b422ea93a48fca863872b4e6fffd7",
+        "firstName": "Steve",
+        "lastName": "Jobs",
+        "phone": "+4511223344",
+        "email": "pt+steve.jobs@drivr.com",
+        "status": "busy",
+        "vehicleId": "1580068940",
+        "rating": 4.0,
+        "behaviorRating": 4.2,
+        "photoUrl": "https://resource-master-drivr-com.s3.amazonaws.com/photos/dailies/1580060992-20161015194114.jpg",
+        "photos": [
+          {
+            "url": "https://api.master.drivr.com/images?dimension=150&file=https%3a%2f%2fresource-master-drivr-com.s3.amazonaws.com%2fphotos%2fdailies%2f1580060992-20161015194114.jpg",
+            "width": 150,
+            "height": 150,
+            "type": "thumbnail"
+          }
+        ],
+        "device": {
+          "id": "1580038232",
+          "make": "Apple",
+          "model": "iPhone",
+          "osName": "iPhone OS",
+          "osVersion": "9.3.5",
+          "appName": "Drivr iOS Driver",
+          "appVersion": "2.4.0.976",
+          "createdAt": "2016-09-15T07:36:57+00:00",
+          "pushNotificationToken": "352BF1061656233524055377D3B878F0F9B3A60D7136B64FEAFDC1083A927D39",
+          "installationIdentifier": "6b284845144040de86d13fae3ed73fa9"
+        },
+        "vehicle": {
+          "id": "1580068940",
+          "uid": "ed6fac82af9e48eb8812a7c03170f016",
+          "make": "Mercedes",
+          "model": "B-class",
+          "type": "taxi",
+          "vehicleType": {
+            "id": "taxi",
+            "name": "Taxi",
+            "category": "taxi",
+            "ref": "/vehicleTypes/taxi"
+          },
+          "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+          "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logoalternate_ico_vehicle_taxi_top@2x.png",
+          "licensePlate": "COMMANIGY",
+          "externalReference": "COMMANIGY-TAXI",
+          "year": "2016",
+          "color": "grey",
+          "paymentTerminalTypes": [
+            "adyen"
+          ],
+          "position": {
+            "id": "1580030756",
+            "createdAt": "2016-10-18T13:11:16+00:00",
+            "lat": 55.685702366806282,
+            "lng": 12.58787973785082,
+            "accuracy": 10.0
+          },
+          "driverGroupId": "1580031575",
+          "ref": "/vehicles/1580068940"
+        },
+        "state": "approved",
+        "shift": {
+          "id": "1580036678",
+          "startedAt": "2016-10-18T13:10:11+00:00"
+        },
+        "dailyPhotoUpdatedAt": "2016-10-15T19:41:15+00:00",
+        "certificates": [
+          {
+            "id": "1580025091",
+            "type": "COMMERCIAL_TRANSPORT_LICENSE",
+            "url": "https://resource-master-drivr-com.s3.amazonaws.com/photos/certificates/COMMERCIAL_TRANSPORT_LICENSE/1E01F43C-9F69-4ABF-96FD-3F6567627529.jpg"
+          }
+        ],
+        "termsAccepted": true,
+        "group": {
+          "id": "1580031575",
+          "name": "Commanigy Drivers",
+          "boss": {
+            "id": "1580060992",
+            "firstName": "Steve",
+            "lastName": "Jobs"
+          },
+          "company": {
+            "id": "806f86181b0f413594c10bf434ebae8b",
+            "franchiseId": "d1f49ba1827a4a6f8d59fc3cfe7607b2",
+            "automatedBooking": true,
+            "phone": "+4589885942",
+            "paymentNumberFormatting": "%.2f",
+            "dispatchingMinimumDriverBehaviorRating": 2.25,
+            "dispatchingAllocationExpiration": 12,
+            "ref": "/companies/806f86181b0f413594c10bf434ebae8b"
+          },
+          "permissions": [
+            "reservations",
+            "hails",
+            "carpooling",
+            "cancellations",
+            "noShows",
+            "biddingList",
+            "incomingBookings"
+          ],
+          "reservationsNotifyInterval": 600,
+          "driversCount": 5
+        },
+        "groups": [
+          {
+            "id": "1580031575",
+            "name": "Commanigy Drivers",
+            "boss": {
+              "id": "1580060992",
+              "firstName": "Steve",
+              "lastName": "Jobs"
+            },
+            "company": {
+              "id": "806f86181b0f413594c10bf434ebae8b",
+              "franchiseId": "d1f49ba1827a4a6f8d59fc3cfe7607b2",
+              "automatedBooking": true,
+              "phone": "+4589885942",
+              "paymentNumberFormatting": "%.2f",
+              "dispatchingMinimumDriverBehaviorRating": 2.25,
+              "dispatchingAllocationExpiration": 12,
+              "ref": "/companies/806f86181b0f413594c10bf434ebae8b"
+            },
+            "permissions": [
+              "reservations",
+              "hails",
+              "carpooling",
+              "cancellations",
+              "noShows",
+              "biddingList",
+              "incomingBookings"
+            ],
+            "reservationsNotifyInterval": 600,
+            "driversCount": 5
+          }
+        ],
+        "companyName": "Steve Jobs",
+        "externalReference": "STEVE-JOBS"
+      },
+      "vehicle": {
+        "id": "1580068940",
+        "uid": "ed6fac82af9e48eb8812a7c03170f016",
+        "make": "Mercedes",
+        "model": "B-class",
+        "type": "taxi",
+        "vehicleType": {
+          "id": "taxi",
+          "name": "Taxi",
+          "category": "taxi",
+          "ref": "/vehicleTypes/taxi"
+        },
+        "iconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logo_ico_vehicle_taxi_side@2x.png",
+        "mapIconUrl": "https://resource-master-drivr-com.s3.amazonaws.com/properties/vehicle-types_taxi_logoalternate_ico_vehicle_taxi_top@2x.png",
+        "licensePlate": "COMMANIGY",
+        "externalReference": "COMMANIGY-TAXI",
+        "year": "2016",
+        "color": "grey",
+        "paymentTerminalTypes": [
+          "adyen"
+        ],
+        "position": {
+          "id": "1580030756",
+          "createdAt": "2016-10-18T13:11:16+00:00",
+          "lat": 55.685702366806282,
+          "lng": 12.58787973785082,
+          "accuracy": 10.0
+        },
+        "driverGroupId": "1580031575",
+        "ref": "/vehicles/1580068940"
+      },
+      "payment": {
+        "id": "1580052440",
+        "currency": "DKK",
+        "currencySymbol": "kr",
+        "type": "cash",
+        "price": 25.0,
+        "taxPrice": 0.0,
+        "priceType": "metered",
+        "priceParts": {
+          "starting": 20.0,
+          "distance": 0.0,
+          "driverPayout": 25.0,
+          "duration": 0.0,
+          "tax": 0.0,
+          "voucher": 0.0,
+          "corporationDiscount": 0.0,
+          "discount": 0.0,
+          "base": 20.0
+        },
+        "receipt": {
+          "type": "cash",
+          "priceType": "metered",
+          "price": 20.0,
+          "fees": [],
+          "totalFare": 20.0,
+          "finalFare": 25.0,
+          "invoiceNumber": "KØBE-1581170768",
+          "invoiceName": "JP Franchise Partner",
+          "finalFareTax": 0.0,
+          "tips": 5.0,
+          "baseFare": 20.0,
+          "distance": 0.0,
+          "duration": 13,
+          "waiting": 7
+        },
+        "invoiceNumber": "KØBE-1581170768",
+        "invoiceName": "JP Franchise Partner",
+        "createdAt": "2016-10-18T13:10:43+00:00",
+        "ref": "/bookingpayments/1580052440"
+      },
+      "distance": 0.0,
+      "duration": 14,
+      "cancellationPeriod": 180,
+      "estimate": {
+        "currency": "DKK",
+        "currencySymbol": "kr",
+        "arrivalTime": 1560,
+        "distance": 0.0,
+        "duration": 60,
+        "polyline": "sd{rI}rykAj@eDlB|AjM~JbD|CnBtA\\RQj@e@jCq@pDiBnKq@lDa@nBs@zDmCxOwBrMsB~LgC~Nw@lFsB|LG\\DB|AbBvAvAj@\\fHzGvBnBxGfGL`@p@p@@RPVTXTf@FP?XkBjH_AhCYd@q@vA{BvDaArAo@l@_@VeA`Aq@tA_@fAe@lBWbBIjAMtFG`HO|GUbEGdCUrAa@rAcCfFMVk@zA{@`E_@rBe@hBgApCy@dBs@|@i@h@kBlBs@z@uBvD_BxCoA|Be@dAuAdCQTi@`@k@Xo@Pu@NqAFoCAgAPo@R_@Ru@f@_@\\]`@k@v@_AfBw@`CWjA[pBMrAMhBE~@{@rVUfCe@vBg@zAw@nBuC~DgGdI}E|GoDdEy@z@qBlBg@ZgA`AS@_DdBaGdDmEdCUL[VcAdAcAjBBpA^xGRlDLj@RnC|ApTd@lGnEw@LADGhB~AVVXs@Vt@BD"
+      },
+      "payee": "person",
+      "paymentType": "cash",
+      "jobType": "cash",
+      "channelType": "app",
+      "metered": true,
+      "virtualMetered": true,
+      "ref": "/clients/5a061a5215fa4eb0b0103106d55ae30f/bookings/41710bc54356450385c16321a0b19e22",
+      "preBooking": false
     }
 
 
