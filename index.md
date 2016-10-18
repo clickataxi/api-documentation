@@ -1889,6 +1889,39 @@ Returns full details about an existing booking created by client.
     }
 
 
+### <a id="get_client_booking" href="#get_client_booking">PATCH /clients/:clientId/bookings/:id</a>
+
+Updates an existing booking.
+
+#### Example request
+
+    curl https://api.drivr.com/clients/9535253/bookings/483233 \
+      -H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
+      -H 'Accept: application/vnd.drivr.v2+json' \
+      -H 'Content-type: application/json' \
+      -X "PATCH"
+      -d '{ "arrivalAt": "2014-10-10T23:00:00.0000000Z", "dropoff":{"streetName":"Jagtvej","houseNumber":"111","zipCode":"2200","city":"Copenhagen N","country":"DK","lat":55.696406,"lng":12.550911} }'
+
+#### Example response
+
+    HTTP/1.0 200 OK
+    Content-Type: application/json; charset=utf-8
+
+    {
+      ...
+      "dropoff": {
+        "streetName":"Jagtvej",
+        "houseNumber":"111",
+        "zipCode":"2200",
+        "city":"Copenhagen N",
+        "country":"DK",
+        "lat":55.696406,
+        "lng":12.550911
+      },
+      "arrivalAt": "2014-10-10T23:00:00.0000000Z"
+    }
+
+
 ### <a id="cancel_booking" href="#cancel_booking">DELETE /clients/:clientId/bookings/:bookingId</a>
 
 Cancels a booking. The method might fail with a `400 Bad Request` response in case a booking can't be canceled e.g. if taxi is already on its way or at the pickup address. A `422 Unprocessed Entity` response is returned in case specified clientId or bookingId isn't valid.
