@@ -1261,7 +1261,7 @@ Returns full details about an existing booking created by client.
 
     HTTP/1.0 200 OK
     Content-Type: application/json; charset=utf-8
-    
+
     {
       "id": "41710bc54356450385c16321a0b19e22",
       "reference": "DZZNCB6",
@@ -2118,7 +2118,7 @@ Requesting a price quote from Amaliegade to Jagtvej on Christmas Eve.
 
 ### <a id="nearby_vehicles" href="#nearby_vehicles">GET /nearbyVehicles</a>
 
-Requests nearby vehicles.
+Requests nearby vehicles. Response will include up to six vehicles and no vehicles outside a five kilometer radius are considered.
 
 
 #### Request parameters
