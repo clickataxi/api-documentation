@@ -1447,7 +1447,7 @@ Requesting a price quote from Amaliegade to Jagtvej on Christmas Eve.
 #### Example response
 
     {
-        "id": "158afb14172",
+      "id": "158afb14172",
       "pickup": {
         "streetName": "Amaliegade",
         "houseNumber": "36",
@@ -1470,11 +1470,16 @@ Requesting a price quote from Amaliegade to Jagtvej on Christmas Eve.
       "price": {
         "value": 179.0,
         "currency": "Kr.",
+        "currencySymbol": "Kr",
+        "type": "fixed",
+        "distance": 5285,
+        "duration": 995,
         "fees": [{
           "type": "BOOKING_FEATURE",
           "price": 10.0
         }]
       },
+      "polyline": "{cleIfytL{@rBILKE[SOSo@cAQY{BmD\\aBh@iAxAaEn@_B~@cCd@[RENVh@z@NVBGp@uAf@mAFKr@}AFWb@}@HEx@aBr@{Al@uAJ_@Vk@He@@Q?B?{@@c@Bi@PuEPgE@k@NMZSl@YdA{AXi@ZYVOn@OfC[jAMNEh@Sh@YdAgAtA_BlA_BP[Rm@ZiBJq@Lc@TiB\\sBJk@@W@MPy@b@_BnAqDd@mA^w@Zq@?E?IFULKFAB@L]DKv@eH`AwJlAaLJw@Fi@AQ?MRiBNwAL]hB{Ql@}F^mExAcO\\oDr@mGnBmRpAiMT_F\\gEf@{EVoB\\uBNW`AsIv@uHt@mH^F|An@VDd@G`AON?\\TP\\DZ\\bHJDDL@FhC_AZc@^u@Ze@l@a@v@k@v@dF`LwFxBmAbA]",
       "quotingAt": "2012-12-24T20:00:00Z",
       "language": "en"
     }
