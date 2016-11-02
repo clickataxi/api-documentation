@@ -1025,6 +1025,8 @@ A success response means our system has accepted your request for a taxi but not
 
 `voucherId` An optional reference to a voucher.
 
+`numberOfSeats` An optional number of seats requested. Defaults to `1` if not specified.
+
 
 #### Example request
 
@@ -1034,7 +1036,7 @@ Creates a pre-booking of a medium sized taxi for Christmas Eve. A `pickup` struc
       -H 'Authorization: Token token="1111a3bb8d4a40f08065e640621fee63"' \
       -H 'Accept: application/vnd.drivr.v2+json' \
       -H 'Content-type: application/json' \
-      -d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "passenger": { "name": "John Doe", "phone": "+4511223344" }, "vehicleType": "fourSeaterAny", "services": "childSeat" }'
+      -d '{ "arrivalAt": "2012-12-24T20:00:00.0000000Z", "pickup":{"streetName":"Amaliegade","houseNumber":"36","zipCode":"1256","city":"Copenhagen K","country":"DK","lat":55.68,"lng":12.59}, "passenger": { "name": "John Doe", "phone": "+4511223344" }, "vehicleType": "fourSeaterAny", "services": "childSeat", "numberOfSeats": 2 }'
 
 
 #### Example response
